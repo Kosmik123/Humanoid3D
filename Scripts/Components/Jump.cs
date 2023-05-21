@@ -59,7 +59,7 @@ namespace Bipolar.Humanoid3D.Components
             if (humanoid.IsGrounded)
                 coyoteTimer = 0;
 
-            if (Input.GetKey(KeyCode.Space))
+            if (UnityEngine.Input.GetKey(KeyCode.Space))
                 jumpBufferTimer = 0;
 
             if (IsJumpRequested && CanJump) 

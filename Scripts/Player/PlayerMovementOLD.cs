@@ -44,9 +44,9 @@ namespace Bipolar.Humanoid3D.Player
 
         private void GetInputs()
         {
-            horizontal = Input.GetAxisRaw("Horizontal") * (smoothInput ? Mathf.Abs(Input.GetAxis("Horizontal")) : 1);
-            vertical = Input.GetAxisRaw("Vertical") * (smoothInput ? Mathf.Abs(Input.GetAxis("Vertical")) : 1);
-            isRunning = Input.GetKey(runProperties.Key);
+            horizontal = UnityEngine.Input.GetAxisRaw("Horizontal") * (smoothInput ? Mathf.Abs(UnityEngine.Input.GetAxis("Horizontal")) : 1);
+            vertical = UnityEngine.Input.GetAxisRaw("Vertical") * (smoothInput ? Mathf.Abs(UnityEngine.Input.GetAxis("Vertical")) : 1);
+            isRunning = UnityEngine.Input.GetKey(runProperties.Key);
         }
 
         private void HandleMove()

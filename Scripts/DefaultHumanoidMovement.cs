@@ -1,4 +1,4 @@
-﻿using Bipolar.Core.Input;
+﻿using Bipolar.Input;
 using System.Collections.Generic;
 using UnityEngine;
 #if NAUGHTY_ATTRIBUTES

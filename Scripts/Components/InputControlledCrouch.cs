@@ -9,7 +9,7 @@ namespace Bipolar.Humanoid3D.Components
 
         public override void DoUpdate(float deltaTime)
         {
-            IsCrouching = Input.GetKey(key);
+            IsCrouching = UnityEngine.Input.GetKey(key);
             base.DoUpdate(deltaTime);
         }
     }

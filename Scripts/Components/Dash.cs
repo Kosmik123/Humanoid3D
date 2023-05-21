@@ -71,7 +71,7 @@ namespace Bipolar.Humanoid3D.Components
             if (cooldownTimer > cooldownDuration)
             {
                 cooldownFinished = true;
-                if (Input.GetKeyDown(key))
+                if (UnityEngine.Input.GetKeyDown(key))
                 {
                     cooldownTimer = 0;
                     CancelInvoke();

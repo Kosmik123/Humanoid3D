@@ -19,6 +19,7 @@ namespace Bipolar.Humanoid3D
         public IReadOnlyList<HumanoidComponent> Components => components;
     }
 
+    [SelectionBase]
     public class HumanoidController : MonoBehaviour
     {
         [SerializeField]
@@ -73,6 +74,9 @@ namespace Bipolar.Humanoid3D
 
         private void OnValidate()
         {
+            if (humanoid == null)
+                humanoid = GetComponent<Humanoid>();
+
             if (Application.isPlaying)
                 foreach (var component in components)
                     if (component != null)

@@ -11,7 +11,7 @@ namespace Bipolar.Humanoid3D
         
         public void ModifySpeed(ref float speed)
         {
-            if (Input.GetKey(key))
+            if (UnityEngine.Input.GetKey(key))
                 speed *= speedModifier;
         }
     }
