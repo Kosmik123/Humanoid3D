@@ -1,9 +1,9 @@
-﻿using Bipolar.Core.Input;
+﻿using Bipolar.Input;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Player
 {
-    public class ViewRotation : MonoBehaviour
+    public class FPPViewRotation : MonoBehaviour
     {
         [Header("To Link")]
         [SerializeField]
