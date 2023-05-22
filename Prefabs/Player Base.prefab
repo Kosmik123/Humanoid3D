@@ -107,7 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   humanoid: {fileID: 0}
-  movement: {fileID: 0}
+  movement: {fileID: 6662325373829142562}
   components: []
 --- !u!1 &7418883944450652687
 GameObject:
@@ -158,4 +158,3 @@ MonoBehaviour:
   speedModifiers: []
   sideModifier: 1
   backModifier: 1
-  currentSpeed: 0

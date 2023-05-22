@@ -1,5 +1,8 @@
 ﻿using Bipolar.Humanoid3D.Components;
 using UnityEngine;
+#if NAUGHTY_ATTRIBUTES
+using NaughtyAttributes;
+#endif
 
 namespace Bipolar.Humanoid3D.Animation
 {
@@ -7,7 +10,11 @@ namespace Bipolar.Humanoid3D.Animation
     {
         [SerializeField]
         private Crouch crouch;
+
         [SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [AnimatorParam(AnimatorName)]
+#endif
         private string parameterName;
 
         protected override void Reset()

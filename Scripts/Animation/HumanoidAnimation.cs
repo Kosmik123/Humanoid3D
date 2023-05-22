@@ -1,11 +1,13 @@
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    public abstract class HumanoidAnimation : MonoBehaviour
+    public abstract partial class HumanoidAnimation : MonoBehaviour
     {
         [SerializeField]
         private Animator animator;
+        protected const string AnimatorName = nameof(animator);
 
         protected virtual void Reset()
         {

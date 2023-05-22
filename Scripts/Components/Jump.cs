@@ -51,6 +51,13 @@ namespace Bipolar.Humanoid3D.Components
 
         public bool IsJumpRequested => jumpBufferTimer < jumpBufferDuration;
 
+        protected override void OnEnable()
+        {
+            base.OnEnable();
+            coyoteTimer = coyoteTime;
+            jumpBufferTimer = jumpBufferDuration;
+        }
+
         public override void DoUpdate(float deltaTime)
         {
             coyoteTimer += deltaTime;
@@ -72,7 +79,6 @@ namespace Bipolar.Humanoid3D.Components
             humanoid.AddVelocity(Vector3.up * jumpForce);
             OnJumped?.Invoke();
         }
-
 
         private void OnValidate()
         {

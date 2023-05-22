@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+#if NAUGHTY_ATTRIBUTES
+using NaughtyAttributes;
+#endif
 
 namespace Bipolar.Humanoid3D.Animation
 {
@@ -8,8 +11,14 @@ namespace Bipolar.Humanoid3D.Animation
         [SerializeField]
         private HumanoidMovement movement;
         [SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [AnimatorParam(AnimatorName)]
+#endif
         private string movingParameterName;
         [SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [AnimatorParam(AnimatorName)]
+#endif
         private string speedParameterName;
         [SerializeField]
         private float minSpeedValue = 0.1f;

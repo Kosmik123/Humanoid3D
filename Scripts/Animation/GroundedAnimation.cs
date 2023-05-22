@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+#if NAUGHTY_ATTRIBUTES
+using NaughtyAttributes;
+#endif
 
 namespace Bipolar.Humanoid3D.Animation
 {
@@ -6,7 +9,11 @@ namespace Bipolar.Humanoid3D.Animation
     {
         [SerializeField]
         private Humanoid humanoid;
+
         [SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [AnimatorParam(AnimatorName)]
+#endif
         private string groundedParameterName;
 
         protected override void Reset()
