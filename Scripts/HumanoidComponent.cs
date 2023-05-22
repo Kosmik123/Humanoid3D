@@ -11,6 +11,7 @@ namespace Bipolar.Humanoid3D
     public abstract class HumanoidComponent : MonoBehaviour, IHumanoidComponent
     {
         protected Humanoid humanoid;
+        public bool IsInited => humanoid != null;
 
         public void Init(Humanoid humanoid)  
         {

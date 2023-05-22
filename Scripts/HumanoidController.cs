@@ -38,7 +38,8 @@ namespace Bipolar.Humanoid3D
             if (components == null || components.Length == 0)
                 components = GetComponents<HumanoidComponent>();
             foreach (var component in components)
-                component.Init(humanoid);
+                if (component.IsInited == false)
+                    component.Init(humanoid);
         }
 
         private void Update()

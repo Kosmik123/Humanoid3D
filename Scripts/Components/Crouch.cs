@@ -5,7 +5,7 @@ using NaughtyAttributes;
 
 namespace Bipolar.Humanoid3D.Components
 {
-    public abstract class CrouchBase : HumanoidComponent, ISpeedModifier
+    public abstract class Crouch : HumanoidComponent, ISpeedModifier
     {
         [Header("Settings")]
         [SerializeField]
@@ -26,8 +26,10 @@ namespace Bipolar.Humanoid3D.Components
         [field: Header("States"), SerializeField]
         public bool IsCrouching { get; protected set; }
 
+        [field: SerializeField]
+        public Vector3 IdleHeadPosition { get; set; }
+
         private float timer;
-        private Vector3 initialHeadPosition;
 
 #if NAUGHTY_ATTRIBUTES
         [ReadOnly]
@@ -35,9 +37,9 @@ namespace Bipolar.Humanoid3D.Components
         [SerializeField]
         private float crouchingProgress;
 
-        void Start()
+        private void Awake()
         {
-            initialHeadPosition = head.localPosition;
+            IdleHeadPosition = head.localPosition;
         }
 
         public override void DoUpdate(float deltaTime)
@@ -51,7 +53,7 @@ namespace Bipolar.Humanoid3D.Components
             float newHeight = Mathf.Lerp(NormalHeight, CrouchHeigth, crouchingProgress);
             humanoid.Height = newHeight;
             humanoid.Center = new Vector3(0, 0.5f * newHeight);
-            var headPosition = initialHeadPosition;
+            var headPosition = IdleHeadPosition;
             headPosition.y -= (NormalHeight - newHeight);
             head.localPosition = headPosition;
         }

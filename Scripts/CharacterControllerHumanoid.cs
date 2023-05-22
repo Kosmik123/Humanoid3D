@@ -6,13 +6,10 @@ namespace Bipolar.Humanoid3D
     [RequireComponent(typeof(CharacterController))]
     public sealed class CharacterControllerHumanoid : Humanoid
     {
-        public override event Action<bool> OnGroundedChanged;
-     
         [Header("States")]
         [SerializeField]
         private Collision collision;
         public CollisionFlags Collision => (CollisionFlags)collision;
-        public override bool IsGrounded => collision.HasFlag((Collision)CollisionFlags.Below);
 
         [SerializeField]
         private Vector3 velocity;
@@ -28,7 +25,6 @@ namespace Bipolar.Humanoid3D
         {
             get => motion;
         }
-
 
         private CharacterController character;
         private CharacterController Character
@@ -59,6 +55,10 @@ namespace Bipolar.Humanoid3D
             set => Character.center = value;
         }
 
+        [SerializeField]
+        private bool isMoving;
+        public override bool IsMoving => isMoving;
+
         private void Reset()
         {
             character = GetComponent<CharacterController>();
@@ -76,12 +76,11 @@ namespace Bipolar.Humanoid3D
             motion = modifiedMotion;
 
             var localMotion = motion + velocity * deltaTime;
-            bool previousGrounded = IsGrounded;
-            collision = (Collision)(int)Character.Move(localMotion);
+            collision = (Collision)Character.Move(localMotion);
             HandleCeilingHit();
+            isMoving = motion != Vector3.zero;
             modifiedMotion = Vector3.zero;
-            if (IsGrounded != previousGrounded)
-                OnGroundedChanged?.Invoke(IsGrounded);
+            IsGrounded = collision.HasFlag((Collision)CollisionFlags.Below);
         }
 
         private void HandleCeilingHit()

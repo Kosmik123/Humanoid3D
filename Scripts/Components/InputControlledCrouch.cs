@@ -2,7 +2,7 @@
 
 namespace Bipolar.Humanoid3D.Components
 {
-    public class InputControlledCrouch : CrouchBase
+    public class InputControlledCrouch : Crouch
     {
         [SerializeField]
         private KeyCode key = KeyCode.LeftControl; // docelowo to ma być jakiś input provider

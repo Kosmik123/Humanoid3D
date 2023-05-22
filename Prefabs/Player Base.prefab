@@ -103,11 +103,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1013712740209492033}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 152b2712c27f67c459d5cbfeb4d6c898, type: 3}
+  m_Script: {fileID: 11500000, guid: 947bc2c42eea23e4bb56cdfa8729c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   humanoid: {fileID: 0}
-  movement: {fileID: 6662325373829142562}
+  movement: {fileID: 0}
   components: []
 --- !u!1 &7418883944450652687
 GameObject:
@@ -149,12 +149,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 7418883944450652687}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5c3d340a7eb6b344b9968056b86f56ed, type: 3}
+  m_Script: {fileID: 11500000, guid: 800d7def4ea2b634fb205c04aa37ef56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardProvider: {fileID: 1013712740209492037}
-  moveSpeed: 6
+  forwardProvider: {fileID: 1014431641685380163}
+  moveSpeed: 0
   moveInputProvider: {fileID: 0}
   speedModifiers: []
   sideModifier: 1
   backModifier: 1
+  currentSpeed: 0

@@ -1,6 +1,6 @@
 ﻿namespace Bipolar.Humanoid3D.Components
 {
-    public class ExternalControlledCrouch : CrouchBase
+    public class ExternalControlledCrouch : Crouch
     {
         public void SetCrouching(bool crouching)
         {

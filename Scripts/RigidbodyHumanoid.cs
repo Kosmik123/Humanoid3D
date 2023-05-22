@@ -6,8 +6,6 @@ namespace Bipolar.Humanoid3D
     [RequireComponent(typeof(Rigidbody), typeof (CapsuleCollider))]
     public sealed class RigidbodyHumanoid : Humanoid
     {
-        public override event Action<bool> OnGroundedChanged;
-
         private new Rigidbody rigidbody;
         private new CapsuleCollider collider;
 
@@ -44,7 +42,7 @@ namespace Bipolar.Humanoid3D
             }
         }
 
-        public override bool IsGrounded => throw new System.NotImplementedException();
+        public override bool IsMoving => throw new NotImplementedException();
 
         private void Awake()
         {
@@ -71,9 +69,6 @@ namespace Bipolar.Humanoid3D
         {
             float gravityScale = Velocity.y > 0 ? Gravity.UpScale : Gravity.DownScale;
             rigidbody.AddRelativeForce(Physics.gravity * gravityScale);
-
-
         }
-
     }
 }
