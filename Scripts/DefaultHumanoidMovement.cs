@@ -56,8 +56,9 @@ namespace Bipolar.Humanoid3D
 
         private Vector3 GetMovementDirection()
         {
-            float x = MoveInputProvider.GetHorizontal() * sideModifier;
-            float z = MoveInputProvider.GetVertical();
+            var moveInput = MoveInputProvider.GetMotion();
+            float x = moveInput.x * sideModifier;
+            float z = moveInput.y;
             if (z < 0)
                 z *= backModifier;
             

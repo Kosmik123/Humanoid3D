@@ -41,13 +41,13 @@ namespace Bipolar.Humanoid3D.Player
 
         void Update()
         {
-            float mouseX = InputProvider.GetHorizontal() * sensitivity.x;
-            float mouseY = InputProvider.GetVertical() * sensitivity.y;
-
-            xAngle = Mathf.Clamp(xAngle - mouseY, minCameraAngle, maxCameraAngle);
+            Vector2 moveInput = InputProvider.GetMotion();
+            moveInput.Scale(sensitivity);
+            
+            xAngle = Mathf.Clamp(xAngle - moveInput.y, minCameraAngle, maxCameraAngle);
 
             head.transform.localRotation = Quaternion.AngleAxis(xAngle, Vector3.right);
-            body.Rotate(Vector3.up * mouseX);
+            body.Rotate(Vector3.up * moveInput.x);
         }
 
         private void OnValidate()
