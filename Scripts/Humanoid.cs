@@ -29,7 +29,7 @@ namespace Bipolar.Humanoid3D
                 OnGroundedChanged?.Invoke(value);
             }
         }
- 
+
         public abstract Vector3 Center { get; set; }
         public abstract float Height { get; set; }
         public abstract float Radius { get; set; }
@@ -38,11 +38,15 @@ namespace Bipolar.Humanoid3D
         public abstract bool IsMoving { get; }
 
         public abstract void AddVelocity(Vector3 velocity);
-        public abstract void AddMovement(Vector3 motion);
+        public abstract void AddMovementVelocity(Vector3 motion);
         
         internal abstract void ApplyMovement(float deltaTime);
         internal abstract void ApplyGravity(float deltaTime);
 
         protected const float defaultHumanHeight = 1.8f;
+
+        protected virtual void Awake()
+        {
+        }
     }
 }

@@ -19,11 +19,11 @@ namespace Bipolar.Humanoid3D
         }
 
         [SerializeField]
-        private Vector3 motion;
-        private Vector3 modifiedMotion;
+        private Vector3 movementVelocity;
+        private Vector3 modifiedMovementVelocity;
         public Vector3 Motion
         {
-            get => motion;
+            get => movementVelocity;
         }
 
         private CharacterController character;
@@ -66,20 +66,21 @@ namespace Bipolar.Humanoid3D
             Height = defaultHumanHeight;
         }
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             character = GetComponent<CharacterController>();
         }
 
         internal override void ApplyMovement(float deltaTime)
         {
-            motion = modifiedMotion;
+            movementVelocity = modifiedMovementVelocity;
 
-            var localMotion = motion + velocity * deltaTime;
+            var localMotion = (transform.rotation * movementVelocity + velocity) * deltaTime;
             collision = (Collision)Character.Move(localMotion);
             HandleCeilingHit();
-            isMoving = motion != Vector3.zero;
-            modifiedMotion = Vector3.zero;
+            isMoving = movementVelocity != Vector3.zero;
+            modifiedMovementVelocity = Vector3.zero;
             IsGrounded = collision.HasFlag((Collision)CollisionFlags.Below);
         }
 
@@ -89,9 +90,9 @@ namespace Bipolar.Humanoid3D
                 velocity.y = 0;
         }
 
-        public override void AddMovement(Vector3 motion)
+        public override void AddMovementVelocity(Vector3 motion)
         {
-            modifiedMotion += motion;
+            modifiedMovementVelocity += motion;
         }
 
         public override void AddVelocity(Vector3 velocity)

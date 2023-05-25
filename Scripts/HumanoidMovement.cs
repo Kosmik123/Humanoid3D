@@ -11,22 +11,13 @@ namespace Bipolar.Humanoid3D
     public abstract class HumanoidMovement : MonoBehaviour
     {
         [SerializeField]
-        private Transform forwardProvider;
-        public Transform ForwardProvider
-        {
-            get => forwardProvider;
-            set => forwardProvider = value;
-        }
-
-        [SerializeField]
         private float moveSpeed;
 
         [SerializeField]
         protected abstract IReadOnlyList<ISpeedModifier> SpeedModifiers { get; }
 
-        internal abstract void CalculateMotion(float deltaTime);
-
-        public abstract Vector3 Motion { get; }
+        internal abstract void CalculateVelocity();
+        public abstract Vector3 Velocity { get; }
 
         protected float GetSpeed()
         {

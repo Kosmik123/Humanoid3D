@@ -27,8 +27,8 @@ namespace Bipolar.Humanoid3D
         [SerializeField, Range(0,1)]
         private float backModifier = 1;
 
-        private Vector3 movement;
-        public override Vector3 Motion => movement;
+        private Vector3 velocity;
+        public override Vector3 Velocity => velocity;
 
 #if NAUGHTY_ATTRIBUTES
         [SerializeField, ReadOnly]
@@ -43,7 +43,7 @@ namespace Bipolar.Humanoid3D
                     speedModifiersList.Add(speedModifier);
         }
 
-        internal override void CalculateMotion(float deltaTime)
+        internal override void CalculateVelocity()
         {
             currentSpeed = GetSpeed();
 
@@ -51,7 +51,7 @@ namespace Bipolar.Humanoid3D
             if (velocity.sqrMagnitude > currentSpeed * currentSpeed)
                 velocity = velocity.normalized * currentSpeed;
 
-            movement = ForwardProvider.rotation * velocity * deltaTime;
+            this.velocity = velocity;
         }
 
         private Vector3 GetMovementDirection()

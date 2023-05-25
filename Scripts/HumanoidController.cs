@@ -46,10 +46,8 @@ namespace Bipolar.Humanoid3D
         {
             float deltaTime = Time.deltaTime;
             humanoid.ApplyGravity(deltaTime);
-            movement.CalculateMotion(deltaTime);
-
-            humanoid.AddMovement(movement.Motion);
-
+            movement.CalculateVelocity();
+            humanoid.AddMovementVelocity(movement.Velocity);
             foreach (var component in components)
                 if (component.enabled)
                     component.DoUpdate(deltaTime);

@@ -10,18 +10,27 @@ namespace Bipolar.Humanoid3D.Animation
         [Header("Settings")]
         [SerializeField]
         private HumanoidMovement movement;
+
         [SerializeField]
 #if NAUGHTY_ATTRIBUTES
         [AnimatorParam(AnimatorName)]
 #endif
         private string movingParameterName;
+
         [SerializeField]
 #if NAUGHTY_ATTRIBUTES
         [AnimatorParam(AnimatorName)]
 #endif
-        private string speedParameterName;
+        private string forwardSpeedParameterName;
+
         [SerializeField]
-        private float minSpeedValue = 0.1f;
+#if NAUGHTY_ATTRIBUTES
+        [AnimatorParam(AnimatorName)]
+#endif
+        private string sideSpeedParameterName;
+
+        [SerializeField]
+        private Vector2 speedModifiers = Vector2.one;
 
         [Header("Humanoid Feedback")]
         [SerializeField]
@@ -41,16 +50,11 @@ namespace Bipolar.Humanoid3D.Animation
         {
             bool isMoving = IsMoving;
             SetBool(Animator.StringToHash(movingParameterName), isMoving);
-            if (isMoving)
-            {
-                Vector2 horizontalVelocity = new Vector2(humanoid.Velocity.x, humanoid.Velocity.z);
-                float speed = horizontalVelocity.magnitude;
-                SetFloat(Animator.StringToHash(speedParameterName), speed);
-            }
-            else
-            {
-                SetFloat(Animator.StringToHash(speedParameterName), 1);
-            }
+
+            Vector2 horizontalVelocity = new Vector2(humanoid.Velocity.x, humanoid.Velocity.z);
+            horizontalVelocity.Scale(speedModifiers);
+            SetFloat(Animator.StringToHash(forwardSpeedParameterName), horizontalVelocity.y);
+            SetFloat(Animator.StringToHash(sideSpeedParameterName), horizontalVelocity.x);
         }
     }
 }

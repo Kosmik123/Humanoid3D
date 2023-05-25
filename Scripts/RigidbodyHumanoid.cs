@@ -44,8 +44,9 @@ namespace Bipolar.Humanoid3D
 
         public override bool IsMoving => throw new NotImplementedException();
 
-        private void Awake()
+        protected override void Awake()
         {
+            base.Awake();
             rigidbody = GetComponent<Rigidbody>();
             collider = GetComponent<CapsuleCollider>();
         }
@@ -55,7 +56,7 @@ namespace Bipolar.Humanoid3D
             throw new System.NotImplementedException();
         }
 
-        public override void AddMovement(Vector3 vector3)
+        public override void AddMovementVelocity(Vector3 vector3)
         {
             throw new System.NotImplementedException();
         }

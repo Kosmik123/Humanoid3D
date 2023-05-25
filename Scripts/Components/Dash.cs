@@ -28,14 +28,6 @@ namespace Bipolar.Humanoid3D.Components
         }
 
         [SerializeField]
-        private Transform forwardProvider;
-        public Transform ForwardProvider
-        {
-            get => forwardProvider;
-            set => forwardProvider = value;
-        }
-
-        [SerializeField]
         private float cooldownDuration = 0.3f;
         public float CooldownDuration
         {
@@ -61,7 +53,8 @@ namespace Bipolar.Humanoid3D.Components
         [SerializeField]
         private bool isDashing;
 
-        private Vector3 dashDirection;
+        [SerializeField]
+        private Vector3 dashLocalDirection;
 
         public override void DoUpdate(float deltaTime)
         {
@@ -76,21 +69,20 @@ namespace Bipolar.Humanoid3D.Components
                     cooldownTimer = 0;
                     CancelInvoke();
                     isDashing = true;
-                    dashDirection = forwardProvider.forward;
                     Invoke(nameof(StopDashing), dashDuration);
                 }
             }
 
             if (isDashing)
-                humanoid.AddMovement(dashSpeed * deltaTime * dashDirection);
+                humanoid.AddMovementVelocity(dashSpeed * deltaTime * dashLocalDirection);
         }
 
         public void StopDashing()
         {
-            humanoid.AddVelocity(dashSpeed * dashDirection);
+            humanoid.AddVelocity(dashSpeed * dashLocalDirection);
             isDashing = false;
             cooldownFinished = false;
-            dashDirection = Vector3.zero;
+            dashLocalDirection = Vector3.zero;
         }
     }
 }
