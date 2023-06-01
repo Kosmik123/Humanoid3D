@@ -61,8 +61,8 @@ namespace Bipolar.Humanoid3D
             float z = moveInput.y;
             if (z < 0)
                 z *= backModifier;
-            
-            return new Vector3(x, 0, z);
+
+            return transform.forward * z + transform.right * x;
         }
 
         private void OnValidate()

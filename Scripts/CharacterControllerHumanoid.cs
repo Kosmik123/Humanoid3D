@@ -76,7 +76,7 @@ namespace Bipolar.Humanoid3D
         {
             movementVelocity = modifiedMovementVelocity;
 
-            var localMotion = (transform.rotation * movementVelocity + velocity) * deltaTime;
+            var localMotion = (movementVelocity + velocity) * deltaTime;
             collision = (Collision)Character.Move(localMotion);
             HandleCeilingHit();
             isMoving = movementVelocity != Vector3.zero;
