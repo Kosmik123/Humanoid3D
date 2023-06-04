@@ -9,7 +9,9 @@ namespace Bipolar.Humanoid3D.Animation
     {
         [Header("Settings")]
         [SerializeField]
-        private HumanoidMovement movement;
+        private Humanoid humanoid;
+        [SerializeField, Range(0, 1)]
+        private float smoothing;
 
         [SerializeField]
 #if NAUGHTY_ATTRIBUTES
@@ -35,15 +37,15 @@ namespace Bipolar.Humanoid3D.Animation
         [Header("Humanoid Feedback")]
         [SerializeField]
         private bool animateNotMoving;
+
         [SerializeField]
-        private Humanoid humanoid;
+        private Vector2 horizontalVelocity;
 
         public bool IsMoving => humanoid == null || humanoid.IsMoving;
 
         protected override void Reset()
         {
             base.Reset();
-            movement = GetComponent<HumanoidMovement>();
         }
 
         private void Update()
@@ -51,7 +53,10 @@ namespace Bipolar.Humanoid3D.Animation
             bool isMoving = IsMoving;
             SetBool(Animator.StringToHash(movingParameterName), isMoving);
 
-            Vector2 horizontalVelocity = new Vector2(humanoid.Velocity.x, humanoid.Velocity.z);
+            horizontalVelocity = Vector2.Lerp(
+                new Vector2(humanoid.LocalMovementVelocity.x, humanoid.LocalMovementVelocity.z),
+                horizontalVelocity, smoothing);
+
             horizontalVelocity.Scale(speedModifiers);
             SetFloat(Animator.StringToHash(forwardSpeedParameterName), horizontalVelocity.y);
             SetFloat(Animator.StringToHash(sideSpeedParameterName), horizontalVelocity.x);
