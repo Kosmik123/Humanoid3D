@@ -44,6 +44,8 @@ namespace Bipolar.Humanoid3D
 
         public override bool IsMoving => throw new NotImplementedException();
 
+        public override Vector3 LocalMovementVelocity => throw new NotImplementedException();
+
         protected override void Awake()
         {
             base.Awake();

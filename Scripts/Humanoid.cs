@@ -35,6 +35,7 @@ namespace Bipolar.Humanoid3D
         public abstract float Radius { get; set; }
 
         public abstract Vector3 Velocity { get; }
+        public abstract Vector3 LocalMovementVelocity { get; }
         public abstract bool IsMoving { get; }
 
         public abstract void AddVelocity(Vector3 velocity);

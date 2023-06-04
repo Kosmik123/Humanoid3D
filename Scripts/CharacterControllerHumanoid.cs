@@ -59,6 +59,8 @@ namespace Bipolar.Humanoid3D
         private bool isMoving;
         public override bool IsMoving => isMoving;
 
+        public override Vector3 LocalMovementVelocity => Quaternion.Inverse(transform.rotation) * movementVelocity;
+
         private void Reset()
         {
             character = GetComponent<CharacterController>();
