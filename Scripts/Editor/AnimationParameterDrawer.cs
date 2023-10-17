@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
-using UnityEditor;
 
 namespace Bipolar.Humanoid3D.Animation
 {
+<<<<<<<< HEAD:Scripts/Editor/AnimationParameterDrawer.cs
 #if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(AnimationParameter))]
     public class AnimationParameterDrawer : PropertyDrawer
@@ -22,6 +22,35 @@ namespace Bipolar.Humanoid3D.Animation
             EditorGUI.TextField(fieldRect, property.FindPropertyRelative("name").stringValue);
 
             EditorGUI.EndProperty();
+========
+    [System.Serializable]
+    public struct AnimationParameter
+    {
+        [SerializeField]
+        private string name;
+        [SerializeField]
+        private int hash;
+        private bool hasValue;
+
+        public int Value
+        {
+            get
+            {
+                if (hasValue == false)
+                {
+                    hash = Animator.StringToHash(name);
+                    hasValue = true;
+                }
+                return hash;
+            }
+        }
+
+        public AnimationParameter(string name)
+        {
+            this.name = name;
+            hash = Animator.StringToHash(name);
+            hasValue = true;
+>>>>>>>> 8e2cf2edbcfb14e9128bd393a1facebfe24ade42:Scripts/Animation/AnimationParameter.cs
         }
     }
 #endif

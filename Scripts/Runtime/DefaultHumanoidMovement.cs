@@ -1,6 +1,7 @@
 ﻿using Bipolar.Input;
 using System.Collections.Generic;
 using UnityEngine;
+using Bipolar.Core;
 #if NAUGHTY_ATTRIBUTES
 using NaughtyAttributes;
 #endif
@@ -9,7 +10,7 @@ namespace Bipolar.Humanoid3D
 {
     public class DefaultHumanoidMovement : HumanoidMovement
     {
-        [SerializeField]
+        [SerializeField, RequireInterface(typeof(IMoveInputProvider))]
         private Object moveInputProvider;
         public IMoveInputProvider MoveInputProvider
         {
