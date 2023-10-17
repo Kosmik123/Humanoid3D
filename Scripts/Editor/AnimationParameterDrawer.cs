@@ -3,23 +3,7 @@ using UnityEditor;
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    [System.Serializable]
-    public struct AnimationParameter
-    {
-        [SerializeField]
-        private string name;
-        [SerializeField]
-        private int hash;
-
-        public int Value => hash;
-
-        public AnimationParameter(string name)
-        {
-            this.name = name;
-            hash = Animator.StringToHash(name);
-        }
-    }
-
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(AnimationParameter))]
     public class AnimationParameterDrawer : PropertyDrawer
     {
@@ -40,4 +24,5 @@ namespace Bipolar.Humanoid3D.Animation
             EditorGUI.EndProperty();
         }
     }
+#endif
 }
