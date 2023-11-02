@@ -1,4 +1,6 @@
+#if NAUGHTY_ATTRIBUTES
 using NaughtyAttributes;
+#endif
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Animation
@@ -31,6 +33,7 @@ namespace Bipolar.Humanoid3D.Animation
             if (hash != 0)
                 animator.SetBool(hash, value);
         }
+
         protected void SetInteger(int hash, int value)
         {
             if (hash != 0)
