@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Bipolar.Humanoid3D
 {
     [RequireComponent(typeof(Rigidbody), typeof (CapsuleCollider))]
-    public sealed class RigidbodyHumanoid : Humanoid
+    public sealed class DynamicHumanoid : Humanoid
     {
         private new Rigidbody rigidbody;
         private new CapsuleCollider collider;

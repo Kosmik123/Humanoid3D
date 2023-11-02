@@ -4,7 +4,7 @@ using UnityEngine;
 namespace Bipolar.Humanoid3D
 {
     [RequireComponent(typeof(CharacterController))]
-    public sealed class CharacterControllerHumanoid : Humanoid
+    public sealed class KinematicHumanoid : Humanoid
     {
         [Header("States")]
         [SerializeField]
