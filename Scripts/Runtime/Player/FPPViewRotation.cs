@@ -1,4 +1,5 @@
-﻿using Bipolar.Input;
+﻿using Bipolar.Core;
+using Bipolar.Input;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Player
@@ -10,7 +11,7 @@ namespace Bipolar.Humanoid3D.Player
         private Transform head;
         [SerializeField]
         private Transform body;
-        [SerializeField]
+        [SerializeField, RequireInterface(typeof(IMoveInputProvider))]
         private Object movementInputProvider;
         public IMoveInputProvider InputProvider
         {

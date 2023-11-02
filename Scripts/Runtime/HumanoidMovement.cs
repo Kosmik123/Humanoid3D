@@ -11,7 +11,7 @@ namespace Bipolar.Humanoid3D
     public abstract class HumanoidMovement : MonoBehaviour
     {
         [SerializeField]
-        private float moveSpeed;
+        private float moveSpeed = 4;
 
         [SerializeField]
         protected abstract IReadOnlyList<ISpeedModifier> SpeedModifiers { get; }
