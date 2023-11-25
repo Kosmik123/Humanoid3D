@@ -1,7 +1,6 @@
 ﻿using Bipolar.Input;
 using System.Collections.Generic;
 using UnityEngine;
-using Bipolar.Core;
 #if NAUGHTY_ATTRIBUTES
 using NaughtyAttributes;
 #endif
@@ -23,9 +22,9 @@ namespace Bipolar.Humanoid3D
         private List<ISpeedModifier> speedModifiersList;
         protected override IReadOnlyList<ISpeedModifier> SpeedModifiers => speedModifiersList;
 
-        [SerializeField, Range(0,1)]
+        [SerializeField, Range(0, 1)]
         private float sideModifier = 1;
-        [SerializeField, Range(0,1)]
+        [SerializeField, Range(0, 1)]
         private float backModifier = 1;
 
         private Vector3 velocity;
@@ -72,18 +71,18 @@ namespace Bipolar.Humanoid3D
             MoveInputProvider = MoveInputProvider;
         }
     }
-}
 
-public static class Extensions
-{
-    public static void ValidateInterfacesArray<T>(ref Object[] array)
+    public static class Extensions
     {
-        if (array == null)
-            return;
-        var valid = new List<Object>(array.Length);
-        foreach (var element in array)
-            if (element is T)
-                valid.Add(element);
-        array = valid.ToArray();
+        public static void ValidateInterfacesArray<T>(ref Object[] array)
+        {
+            if (array == null)
+                return;
+            var valid = new List<Object>(array.Length);
+            foreach (var element in array)
+                if (element is T)
+                    valid.Add(element);
+            array = valid.ToArray();
+        }
     }
 }

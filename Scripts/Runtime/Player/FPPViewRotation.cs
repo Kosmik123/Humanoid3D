@@ -1,5 +1,4 @@
-﻿using Bipolar.Core;
-using Bipolar.Input;
+﻿using Bipolar.Input;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Player
