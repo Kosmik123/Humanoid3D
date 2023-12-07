@@ -10,12 +10,8 @@ public class MovementDirectionRotation : MonoBehaviour
     [SerializeField]
     private float rotationSpeed = 200;
 
-    [SerializeField]
     private Angle rotationAngle;
-
-    [SerializeField]
     private float targetRotationAngle;
-
 
     private void OnEnable()
     {

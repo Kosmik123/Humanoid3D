@@ -68,7 +68,6 @@ namespace Bipolar.Humanoid3D
         private void OnValidate()
         {
             Extensions.ValidateInterfacesArray<ISpeedModifier>(ref speedModifiers);
-            MoveInputProvider = MoveInputProvider;
         }
     }
 
