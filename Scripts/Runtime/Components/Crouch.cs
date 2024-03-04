@@ -1,7 +1,4 @@
 ﻿using UnityEngine;
-#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
-#endif
 
 namespace Bipolar.Humanoid3D.Components
 {
@@ -32,7 +29,7 @@ namespace Bipolar.Humanoid3D.Components
         private float timer;
 
 #if NAUGHTY_ATTRIBUTES
-        [ReadOnly]
+        [NaughtyAttributes.ReadOnly]
 #endif
         [SerializeField]
         private float crouchingProgress;
