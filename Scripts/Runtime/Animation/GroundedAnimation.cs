@@ -10,11 +10,10 @@ namespace Bipolar.Humanoid3D.Animation
         [SerializeField]
         private Humanoid humanoid;
 
-        [SerializeField]
 #if NAUGHTY_ATTRIBUTES
-        [AnimatorParam(AnimatorName)]
+        [AnimatorParameter(AnimatorName, AnimatorControllerParameterType.Bool)]
 #endif
-        private string groundedParameterName;
+        private AnimationParameter groundedParameterName;
 
         protected override void Reset()
         {
@@ -29,7 +28,7 @@ namespace Bipolar.Humanoid3D.Animation
 
         private void AnimateGrounded(bool isGrounded)
         {
-            SetBool(Animator.StringToHash(groundedParameterName), isGrounded);
+            SetBool(groundedParameterName, isGrounded);
         }
 
         private void OnDisable()

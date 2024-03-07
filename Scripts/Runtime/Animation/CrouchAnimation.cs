@@ -8,11 +8,10 @@ namespace Bipolar.Humanoid3D.Animation
         [SerializeField]
         private Crouch crouch;
 
-        [SerializeField]
 #if NAUGHTY_ATTRIBUTES
-        [NaughtyAttributes.AnimatorParam(AnimatorName)]
+        [AnimatorParameter(AnimatorName, AnimatorControllerParameterType.Bool)]
 #endif
-        private string parameterName;
+        private AnimationParameter crouchParameterName;
 
         protected override void Reset()
         {
@@ -22,7 +21,7 @@ namespace Bipolar.Humanoid3D.Animation
 
         private void Update()
         {
-            SetBool(Animator.StringToHash(parameterName), crouch.IsCrouching);
+            SetBool(crouchParameterName, crouch.IsCrouching);
         }
     }
 }
