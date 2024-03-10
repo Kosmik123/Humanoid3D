@@ -19,11 +19,20 @@ namespace Bipolar.Humanoid3D
         public IReadOnlyList<HumanoidComponent> Components => components;
     }
 
-    [SelectionBase]
+    [RequireComponent(typeof(Humanoid)), SelectionBase]
     public class HumanoidController : MonoBehaviour
     {
-        [SerializeField]
-        private Humanoid humanoid;
+        private Humanoid _humanoid;
+        public Humanoid Humanoid 
+        {
+            get 
+            {
+                if (_humanoid == null)
+                    _humanoid = GetComponent<Humanoid>();
+                return _humanoid; 
+            }
+        }
+
         [SerializeField]
         private HumanoidMovement movement;
 
@@ -39,20 +48,20 @@ namespace Bipolar.Humanoid3D
                 components = GetComponents<HumanoidComponent>();
             foreach (var component in components)
                 if (component.IsInited == false)
-                    component.Init(humanoid);
+                    component.Init(_humanoid);
         }
 
         private void Update()
         {
             float deltaTime = Time.deltaTime;
-            humanoid.ApplyGravity(deltaTime);
+            _humanoid.ApplyGravity(deltaTime);
             movement.CalculateVelocity();
-            humanoid.AddMovementVelocity(movement.Velocity);
+            _humanoid.AddMovementVelocity(movement.Velocity);
             foreach (var component in components)
                 if (component.enabled)
                     component.DoUpdate(deltaTime);
 
-            humanoid.ApplyMovement(deltaTime);
+            _humanoid.ApplyMovement(deltaTime);
         }
 
         private void FixedUpdate()
@@ -73,13 +82,13 @@ namespace Bipolar.Humanoid3D
 
         private void OnValidate()
         {
-            if (humanoid == null)
-                humanoid = GetComponent<Humanoid>();
+            if (_humanoid == null)
+                _humanoid = GetComponent<Humanoid>();
 
             if (Application.isPlaying)
                 foreach (var component in components)
                     if (component != null)
-                        component.Init(humanoid);
+                        component.Init(_humanoid);
         }
     }
 }

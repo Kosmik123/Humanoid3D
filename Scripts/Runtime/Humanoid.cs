@@ -2,22 +2,9 @@
 
 namespace Bipolar.Humanoid3D
 {
-    [System.Serializable]
-    public class Gravity
-    {
-        [field: SerializeField, Tooltip("Gravity scale when going up")]
-        public float UpScale { get; set; } = 1;
-
-        [field: SerializeField, Tooltip("Gravity scale when falling down")]
-        public float DownScale { get; set; } = 1;
-    }
-
     public abstract class Humanoid : MonoBehaviour
     {
         public event System.Action<bool> OnGroundedChanged;
-
-        [field: SerializeField]
-        public Gravity Gravity { get; set; }
 
         private bool isGrounded;
         public bool IsGrounded 
@@ -44,10 +31,47 @@ namespace Bipolar.Humanoid3D
         internal abstract void ApplyMovement(float deltaTime);
         internal abstract void ApplyGravity(float deltaTime);
 
-        protected const float defaultHumanHeight = 1.8f;
+        public const float defaultHumanHeight = 1.8f;
+        public const float defaultEyesHeight = defaultHumanHeight - 0.1f;
 
         protected virtual void Awake()
+        { }
+    }
+
+    public abstract class Humanoid<TBody> : Humanoid
+        where TBody : Component
+    {
+        private TBody _body;
+        public TBody Body
         {
+            get
+            {
+                if (_body == null)
+                    _body = GetComponent<TBody>();
+                return _body; 
+            }
+        }
+
+        [SerializeField, RequireInterface(typeof(IGravity))]
+        protected Object gravity;
+        public IGravity<TBody> Gravity
+        {
+            get => gravity as IGravity<TBody>;
+            set => gravity = (Object)value;
+        }
+
+        [SerializeField]
+        private HumanoidComponent[] components;
+
+        internal override void ApplyGravity(float deltaTime)
+        {
+            if (Gravity != null)
+                Gravity.ApplyGravity(this);
+        }
+
+        protected virtual void OnValidate()
+        {
+            Gravity = Gravity;
         }
     }
 }
