@@ -1,27 +1,26 @@
-﻿using Bipolar.Humanoid3D.Components;
-using UnityEngine;
+﻿//using UnityEngine;
 
-namespace Bipolar.Humanoid3D.Animation
-{
-    public class CrouchAnimation : HumanoidAnimation
-    {
-        [SerializeField]
-        private Crouch crouch;
+//namespace Bipolar.Humanoid3D.Animation
+//{
+//    public class CrouchAnimation : HumanoidAnimation
+//    {
+//        [SerializeField]
+//        private Crouch crouch;
 
-#if NAUGHTY_ATTRIBUTES
-        [AnimatorParameter(AnimatorName, AnimatorControllerParameterType.Bool)]
-#endif
-        private AnimationParameter crouchParameterName;
+//#if NAUGHTY_ATTRIBUTES
+//        [AnimatorParameter(AnimatorName, AnimatorControllerParameterType.Bool)]
+//#endif
+//        private AnimationParameter crouchParameterName;
 
-        protected override void Reset()
-        {
-            base.Reset();
-            crouch = GetComponent<Crouch>();
-        }
+//        protected override void Reset()
+//        {
+//            base.Reset();
+//            crouch = GetComponent<Crouch>();
+//        }
 
-        private void Update()
-        {
-            SetBool(crouchParameterName, crouch.IsCrouching);
-        }
-    }
-}
+//        private void Update()
+//        {
+//            SetBool(crouchParameterName, crouch.IsCrouching);
+//        }
+//    }
+//}

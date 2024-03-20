@@ -5,7 +5,7 @@ namespace Bipolar.Humanoid3D
     [RequireComponent(typeof(CharacterController))]
     public sealed class KinematicHumanoid : Humanoid<CharacterController>
     {
-        [Header("States")]
+        [Space, Header("States")]
         [SerializeField]
         private Collision collision;
         public CollisionFlags Collision => (CollisionFlags)collision;
@@ -14,8 +14,13 @@ namespace Bipolar.Humanoid3D
         private Vector3 velocity;
         public override Vector3 Velocity
         {
-            get => Body.velocity;
+            get 
+            { 
+                return Body.velocity;
+            }
         }
+
+        public override Collider Collider => Body;
 
         [SerializeField]
         private Vector3 movementVelocity;
@@ -49,12 +54,6 @@ namespace Bipolar.Humanoid3D
 
         public override Vector3 LocalMovementVelocity => Quaternion.Inverse(transform.rotation) * movementVelocity;
 
-        private void Reset()
-        {
-            Center = Vector3.up * defaultHumanHeight / 2;
-            Height = defaultHumanHeight;
-        }
-
         internal override void ApplyMovement(float deltaTime)
         {
             movementVelocity = modifiedMovementVelocity;
@@ -81,20 +80,6 @@ namespace Bipolar.Humanoid3D
         public override void AddVelocity(Vector3 velocity)
         {
             this.velocity += velocity;
-        }
-
-        internal override void ApplyGravity(float deltaTime)
-        {
-            base.ApplyGravity(deltaTime);
-            //if (IsGrounded && velocity.y < 0)
-            //{
-            //    velocity = 0.2f * GravityStruct.UpScale * Physics.gravity;
-            //}
-            //else
-            //{
-            //    float gravityScale = Velocity.y > 0 ? GravityStruct.UpScale : GravityStruct.DownScale;
-            //    velocity += gravityScale * deltaTime * Physics.gravity;
-            //}
         }
     }
 }

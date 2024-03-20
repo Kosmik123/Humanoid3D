@@ -4,7 +4,7 @@ namespace Bipolar.Humanoid3D
 {
     public class DefaultDynamicGravity : DefaultGravity, IDynamicGravity
     {
-        public void ApplyGravity(Humanoid<Rigidbody> humanoid)
+        public void ApplyGravity(IHumanoid<Rigidbody> humanoid)
         {
             humanoid.Body.useGravity = false;
             float scale = GetScale(humanoid.Velocity.y);

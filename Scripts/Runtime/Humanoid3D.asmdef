@@ -1,0 +1,16 @@
+{
+    "name": "Humanoid3D",
+    "rootNamespace": "Bipolar.Humanoid3D",
+    "references": [
+        "GUID:2ecd41d6ad0cd0748ab7fbaa1a919610"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

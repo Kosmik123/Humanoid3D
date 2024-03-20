@@ -9,8 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6449acaf874e50b42ad420a28edcc73f, type: 3}
-  m_Name: Default Kinematic Gravity
+  m_Script: {fileID: 11500000, guid: 9dd7f1b4f98499948b2fcd1f8abdbd5e, type: 3}
+  m_Name: Constant Y Kinematic Gravity
   m_EditorClassIdentifier: 
-  <UpScale>k__BackingField: 0.1
-  <DownScale>k__BackingField: 0.1
+  constantY: 0

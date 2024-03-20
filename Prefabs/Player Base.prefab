@@ -23,12 +23,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013712739448252216}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1013712740209492037}
-  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013712739861508897
 GameObject:
@@ -53,12 +54,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013712739861508897}
+  serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1013712740209492037}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1013712740209492033
 GameObject:
@@ -84,15 +86,16 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1013712740209492033}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.605, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1013712739861508896}
   - {fileID: 1013712739448252223}
   - {fileID: 1014431641685380163}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1013712740209492039
 MonoBehaviour:
@@ -106,7 +109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 947bc2c42eea23e4bb56cdfa8729c078, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  humanoid: {fileID: 0}
   movement: {fileID: 6662325373829142562}
   components: []
 --- !u!1 &7418883944450652687
@@ -133,12 +135,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7418883944450652687}
+  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1013712740209492037}
-  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &6662325373829142562
 MonoBehaviour:
@@ -152,8 +155,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 800d7def4ea2b634fb205c04aa37ef56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forwardProvider: {fileID: 1014431641685380163}
-  moveSpeed: 0
+  moveSpeed: 5
   moveInputProvider: {fileID: 0}
   speedModifiers: []
   sideModifier: 1

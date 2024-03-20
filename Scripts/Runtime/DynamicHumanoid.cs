@@ -7,7 +7,7 @@ namespace Bipolar.Humanoid3D
     public sealed class DynamicHumanoid : Humanoid<Rigidbody>
     {
         private CapsuleCollider _collider;
-        public CapsuleCollider Collider
+        public CapsuleCollider CapsuleCollider
         {
             get
             {
@@ -17,6 +17,8 @@ namespace Bipolar.Humanoid3D
             }
         }
 
+        public override Collider Collider => CapsuleCollider;
+
         public override Vector3 Velocity
         {
             get => Body.velocity;
@@ -24,29 +26,29 @@ namespace Bipolar.Humanoid3D
 
         public override float Height 
         {
-            get => Collider.height;
+            get => CapsuleCollider.height;
             set
             {
-                Collider.height = value;
-                Collider.direction = 1;
+                CapsuleCollider.height = value;
+                CapsuleCollider.direction = 1;
             }
         }
 
         public override float Radius
         {
-            get => Collider.radius;
+            get => CapsuleCollider.radius;
             set
             {
-                Collider.radius = value;
+                CapsuleCollider.radius = value;
             }
         }
 
         public override Vector3 Center
         {
-            get => Collider.center;
+            get => CapsuleCollider.center;
             set
             {
-                Collider.center = value;
+                CapsuleCollider.center = value;
             }
         }
 
@@ -56,17 +58,17 @@ namespace Bipolar.Humanoid3D
 
         public override void AddVelocity(Vector3 velocity)
         {
-            throw new System.NotImplementedException();
+            var current = Body.velocity;
+            current += velocity;
+            Body.velocity = current;
         }
 
         public override void AddMovementVelocity(Vector3 vector3)
         {
-            throw new System.NotImplementedException();
         }
 
         internal override void ApplyMovement(float deltaTime)
         {
-            throw new System.NotImplementedException();
         }
     }
 }

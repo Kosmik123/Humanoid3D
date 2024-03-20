@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2f6db89daf09ae242bd7758f75e4feb2, type: 3}
   m_Name: Default Dymamic Gravity
   m_EditorClassIdentifier: 
-  <UpScale>k__BackingField: 1
-  <DownScale>k__BackingField: 2
+  <UpScale>k__BackingField: 2
+  <DownScale>k__BackingField: 5

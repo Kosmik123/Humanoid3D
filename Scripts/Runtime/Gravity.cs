@@ -4,20 +4,19 @@ namespace Bipolar.Humanoid3D
 {
     public interface IGravity
     { }
-
-    public interface IGravity<TBody> : IGravity
-        where TBody : Component
-    {
-        void ApplyGravity(Humanoid<TBody> humanoid);
+    
+    public interface IGravity<in THumanoid> : IGravity
+        where THumanoid : IHumanoid
+    { 
+        void ApplyGravity(THumanoid humanoid);
     }
 
-    public interface IDynamicGravity : IGravity<Rigidbody>
-    {
+    public interface IDynamicGravity : IGravity<IHumanoid<Rigidbody>>
+    { }
 
-    }
+    public interface IKinematicGravity : IGravity<IHumanoid<CharacterController>>
+    { }
 
-    public interface IKinematicGravity : IGravity<CharacterController>
-    {
-
-    }
+    public interface IAnyGravity : IGravity<IHumanoid<Component>>
+    { }
 }

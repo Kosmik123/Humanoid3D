@@ -15,5 +15,4 @@ namespace Bipolar.Humanoid3D
             return ySpeed < 0 ? DownScale : UpScale;
         }
     }
-
 }
