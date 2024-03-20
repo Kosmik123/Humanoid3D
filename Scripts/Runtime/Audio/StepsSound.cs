@@ -1,7 +1,7 @@
 ﻿using System;
 using UnityEngine;
 
-namespace Bipolar.Humanoid3D.Sound
+namespace Bipolar.Humanoid3D.Audio
 {
     public class StepsSound : MonoBehaviour
     {
