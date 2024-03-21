@@ -14,19 +14,31 @@ namespace Bipolar.Humanoid3D.Editor
     {
         private const string InvalidAnimatorControllerWarningMessage = "Target animator controller is null";
 
+        private AnimatorParameterAttribute animatorParameterAttribute; 
+        private AnimatorController animatorController;
+
         protected override float GetPropertyHeight_Internal(SerializedProperty property, GUIContent label)
         {
-            const float defaultPropertyHeight = 19;
-            return defaultPropertyHeight;
+            float height = base.GetPropertyHeight_Internal(property, label);
+            if (animatorController == null)
+            {
+                animatorParameterAttribute ??= PropertyUtility.GetAttribute<AnimatorParameterAttribute>(property);
+                animatorController = GetAnimatorController(property, animatorParameterAttribute.AnimatorName);
+                if (animatorController == null)
+                    height += GetHelpBoxHeight();
+            }
+
+            return height;
         }
 
         protected override void OnGUI_Internal(Rect rect, SerializedProperty property, GUIContent label)
         {
             EditorGUI.BeginProperty(rect, label, property);
 
-            var animatorParameterAttribute = PropertyUtility.GetAttribute<AnimatorParameterAttribute>(property);
+            animatorParameterAttribute ??= PropertyUtility.GetAttribute<AnimatorParameterAttribute>(property);
+            if (animatorController == null)
+                animatorController = GetAnimatorController(property, animatorParameterAttribute.AnimatorName);
 
-            AnimatorController animatorController = GetAnimatorController(property, animatorParameterAttribute.AnimatorName);
             if (animatorController == null)
             {
                 DrawDefaultPropertyAndHelpBox(rect, property, InvalidAnimatorControllerWarningMessage, MessageType.Warning);

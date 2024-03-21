@@ -1,9 +1,6 @@
 ﻿using Bipolar.Input;
 using System.Collections.Generic;
 using UnityEngine;
-#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
-#endif
 
 namespace Bipolar.Humanoid3D
 {
@@ -31,7 +28,7 @@ namespace Bipolar.Humanoid3D
         public override Vector3 Velocity => velocity;
 
 #if NAUGHTY_ATTRIBUTES
-        [SerializeField, ReadOnly]
+        [NaughtyAttributes.ShowNonSerializedField]
 #endif
         private float currentSpeed;
 

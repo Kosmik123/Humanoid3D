@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
-#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
-#endif
 
 namespace Bipolar.Humanoid3D.Animation
 {
+    [AddComponentMenu(AddComponentPath.Animation + "Grounded Animation")]
     public class GroundedAnimation : HumanoidAnimation
     {
         [SerializeField]

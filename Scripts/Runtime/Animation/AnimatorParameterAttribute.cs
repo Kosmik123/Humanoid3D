@@ -1,10 +1,9 @@
 ﻿#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    public class AnimatorParameterAttribute : DrawerAttribute
+    public class AnimatorParameterAttribute : NaughtyAttributes.DrawerAttribute
     {
         public string AnimatorName { get; private set; }
         public AnimatorControllerParameterType? AnimatorParamType { get; private set; } = null;

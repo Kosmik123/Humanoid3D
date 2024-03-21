@@ -3,6 +3,17 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
+    public static class AddComponentPath
+    {
+        public const string Root = "Humanoid 3D/";
+        public const string Humanoids = Root + "Humanoids/";
+        public const string Components = Root + "Components/";
+        public const string Gravity = Root + "Gravity/";
+        public const string GroundChecks = Root + "Ground Checks/";
+        public const string Animation = Root + "Animation/";
+        public const string Other = Root + "Other/";
+    }
+
     public interface ISpeedModifier
     {
         void ModifySpeed(ref float speed);

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Audio
 {
+    [AddComponentMenu(AddComponentPath.Other + "Steps Sound")]
     public class StepsSound : MonoBehaviour
     {
         public event Action OnSoundPlayed;

@@ -2,7 +2,8 @@
 
 namespace Bipolar.Humanoid3D.Components
 {
-    public class Jump : HumanoidComponent<Component>
+    [AddComponentMenu(AddComponentPath.Components + "Jump")]
+    public class Jump : HumanoidComponent
     {
         public event System.Action OnJumped;
 
@@ -46,7 +47,7 @@ namespace Bipolar.Humanoid3D.Components
             }
         }
 
-        public bool IsJumpRequested => jumpBufferTimer < jumpBufferDuration;
+        public bool IsJumpRequested => jumpBufferTimer <= jumpBufferDuration;
 
         protected void OnEnable()
         {
@@ -72,7 +73,8 @@ namespace Bipolar.Humanoid3D.Components
         public void DoJump()
         {
             coyoteTimer = coyoteTime;
-            humanoid.AddVelocity(Vector3.up * jumpForce);
+            jumpBufferTimer = jumpBufferDuration;
+            humanoid.AddVelocity(humanoid.Transform.up * jumpForce);
             OnJumped?.Invoke();
         }
 

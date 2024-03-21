@@ -2,6 +2,7 @@
 
 namespace Bipolar.Humanoid3D
 {
+    [AddComponentMenu(AddComponentPath.Humanoids + "Kinematic Humanoid")]
     [RequireComponent(typeof(CharacterController))]
     public sealed class KinematicHumanoid : Humanoid<CharacterController>
     {

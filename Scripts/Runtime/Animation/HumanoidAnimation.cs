@@ -1,11 +1,8 @@
-#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
-#endif
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    public abstract partial class HumanoidAnimation : MonoBehaviour
+    public abstract class HumanoidAnimation : MonoBehaviour
     {
         [SerializeField]
         private Animator animator;

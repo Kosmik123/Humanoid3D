@@ -3,8 +3,9 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
+    [AddComponentMenu(AddComponentPath.Humanoids + "Physical Humanoid")]
     [RequireComponent(typeof(Rigidbody), typeof (CapsuleCollider))]
-    public sealed class DynamicHumanoid : Humanoid<Rigidbody>
+    public sealed class PhysicalHumanoid : Humanoid<Rigidbody>
     {
         private CapsuleCollider _collider;
         public CapsuleCollider CapsuleCollider

@@ -17,9 +17,12 @@ namespace Bipolar.Humanoid3D
         void AddVelocity(Vector3 velocity);
     }
 
-    public abstract class Humanoid : MonoBehaviour, IHumanoid
+    public abstract class Humanoid : MonoBehaviour, IHumanoid, IGroundable
     {
         public event System.Action<bool> OnGroundedChanged;
+
+        [SerializeField]
+        private GroundCheck groundCheck;
 
         [SerializeField]
         private bool isGrounded;
@@ -61,7 +64,10 @@ namespace Bipolar.Humanoid3D
         }
 
         protected virtual void Awake()
-        { }
+        { 
+            if (groundCheck)
+                groundCheck.SetGroundable(this);
+        }
     }
 
     public interface IHumanoid<out TBody> : IHumanoid
@@ -92,8 +98,7 @@ namespace Bipolar.Humanoid3D
             {
                 if (gravity == null)
                     return null;
-                if (_gravity == null)
-                    _gravity = gravity as IGravity<IHumanoid<TBody>>;
+                _gravity ??= gravity as IGravity<IHumanoid<TBody>>;
                 return _gravity;
             }
             set
