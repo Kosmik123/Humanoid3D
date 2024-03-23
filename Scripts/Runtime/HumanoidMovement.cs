@@ -19,7 +19,7 @@ namespace Bipolar.Humanoid3D
         void ModifySpeed(ref float speed);
     }
 
-    public abstract class HumanoidMovement : MonoBehaviour
+    public abstract class HumanoidMovement : HumanoidComponent
     {
         [SerializeField]
         private float moveSpeed = 4;

@@ -57,13 +57,6 @@ namespace Bipolar.Humanoid3D
 
         public override Vector3 LocalMovementVelocity => throw new NotImplementedException();
 
-        public override void AddVelocity(Vector3 velocity)
-        {
-            var current = Body.velocity;
-            current += velocity;
-            Body.velocity = current;
-        }
-
         public override void AddMovementVelocity(Vector3 vector3)
         {
         }
@@ -71,5 +64,16 @@ namespace Bipolar.Humanoid3D
         internal override void ApplyMovement(float deltaTime)
         {
         }
+
+        public override void AddVelocity(Vector3 velocity)
+        {
+            Body.velocity += velocity;
+        }
+
+        public override void SetVelocity(Vector3 velocity)
+        {
+            Body.velocity = velocity;
+        }
+
     }
 }

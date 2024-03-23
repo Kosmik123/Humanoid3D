@@ -15,6 +15,9 @@ namespace Bipolar.Humanoid3D
         }
 
         [SerializeField]
+        private Transform directionProvider;
+
+        [SerializeField, RequireInterface(typeof(ISpeedModifier))]
         private Object[] speedModifiers;
         private List<ISpeedModifier> speedModifiersList;
         protected override IReadOnlyList<ISpeedModifier> SpeedModifiers => speedModifiersList;
@@ -34,10 +37,19 @@ namespace Bipolar.Humanoid3D
 
         private void Awake()
         {
+            if (directionProvider == null)
+                directionProvider = transform;
+
             speedModifiersList = new List<ISpeedModifier>(speedModifiers.Length);
             for (int i = 0; i < speedModifiers.Length; i++)
                 if (speedModifiers[i] is ISpeedModifier speedModifier)
                     speedModifiersList.Add(speedModifier);
+        }
+
+        public override void Apply()
+        {
+            CalculateVelocity();
+            humanoid.SetVelocity(velocity);
         }
 
         internal override void CalculateVelocity()
@@ -59,13 +71,14 @@ namespace Bipolar.Humanoid3D
             if (z < 0)
                 z *= backModifier;
 
-            return transform.forward * z + transform.right * x;
+            return directionProvider.forward * z + directionProvider.right * x;
         }
 
         private void OnValidate()
         {
             Extensions.ValidateInterfacesArray<ISpeedModifier>(ref speedModifiers);
         }
+
     }
 
     public static class Extensions
@@ -76,7 +89,7 @@ namespace Bipolar.Humanoid3D
                 return;
             var valid = new List<Object>(array.Length);
             foreach (var element in array)
-                if (element is T)
+                if (element == null || element is T)
                     valid.Add(element);
             array = valid.ToArray();
         }

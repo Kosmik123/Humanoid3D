@@ -15,6 +15,7 @@ namespace Bipolar.Humanoid3D
         bool IsGrounded { get; }
 
         void AddVelocity(Vector3 velocity);
+        void SetVelocity(Vector3 velocity);
     }
 
     public abstract class Humanoid : MonoBehaviour, IHumanoid, IGroundable
@@ -49,6 +50,7 @@ namespace Bipolar.Humanoid3D
         public abstract Collider Collider { get; }
 
         public abstract void AddVelocity(Vector3 velocity);
+        public abstract void SetVelocity(Vector3 velocity);
         public abstract void AddMovementVelocity(Vector3 motion);
         
         internal abstract void ApplyMovement(float deltaTime);

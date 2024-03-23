@@ -82,5 +82,10 @@ namespace Bipolar.Humanoid3D
         {
             this.velocity += velocity;
         }
+
+        public override void SetVelocity(Vector3 velocity)
+        {
+            this.velocity = velocity;
+        }
     }
 }
