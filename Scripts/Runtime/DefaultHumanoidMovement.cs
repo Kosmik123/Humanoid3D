@@ -49,7 +49,7 @@ namespace Bipolar.Humanoid3D
         public override void Apply()
         {
             CalculateVelocity();
-            humanoid.SetVelocity(velocity);
+            //humanoid.SetVelocity(velocity);
         }
 
         internal override void CalculateVelocity()

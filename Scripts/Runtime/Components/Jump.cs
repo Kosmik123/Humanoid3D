@@ -74,7 +74,7 @@ namespace Bipolar.Humanoid3D.Components
         {
             coyoteTimer = coyoteTime;
             jumpBufferTimer = jumpBufferDuration;
-            humanoid.AddVelocity(humanoid.Transform.up * jumpForce);
+            //humanoid.AddVelocity(humanoid.Transform.up * jumpForce);
             OnJumped?.Invoke();
         }
 

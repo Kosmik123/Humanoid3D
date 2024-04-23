@@ -4,7 +4,7 @@ namespace Bipolar.Humanoid3D
 {
     [AddComponentMenu(AddComponentPath.Humanoids + "Kinematic Humanoid")]
     [RequireComponent(typeof(CharacterController))]
-    public sealed class KinematicHumanoid : Humanoid<CharacterController>
+    public sealed class ControllerHumanoid : Humanoid<CharacterController>
     {
         [Space, Header("States")]
         [SerializeField]
