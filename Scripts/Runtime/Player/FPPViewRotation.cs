@@ -77,7 +77,7 @@ namespace Bipolar.Humanoid3D.Player
             Cursor.lockState = CursorLockMode.Locked;
         }
 
-        void Update()
+        private void Update()
         {
             Vector2 moveInput = InputProvider.GetMotion();
             moveInput.Scale(sensitivity);
