@@ -1,5 +1,4 @@
-﻿using Bipolar.Core;
-using Bipolar.Input;
+﻿using Bipolar.Input;
 using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Player
@@ -11,6 +10,7 @@ namespace Bipolar.Humanoid3D.Player
         private Transform head;
         [SerializeField]
         private Transform body;
+
         [SerializeField, RequireInterface(typeof(IMoveInputProvider))]
         private Object movementInputProvider;
         public IMoveInputProvider InputProvider
@@ -42,7 +42,7 @@ namespace Bipolar.Humanoid3D.Player
 
         void Update()
         {
-            Vector2 moveInput = InputProvider.GetMotion();
+            Vector2 moveInput = InputProvider.GetMovement();
             moveInput.Scale(sensitivity);
             
             xAngle = Mathf.Clamp(xAngle - moveInput.y, minCameraAngle, maxCameraAngle);
