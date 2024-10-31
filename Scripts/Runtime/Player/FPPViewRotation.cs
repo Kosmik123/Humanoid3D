@@ -8,6 +8,7 @@ namespace Bipolar.Humanoid3D.Player
         [Header("To Link")]
         [SerializeField]
         private Transform head;
+
         [SerializeField]
         private Transform body;
 
@@ -24,30 +25,66 @@ namespace Bipolar.Humanoid3D.Player
 
         [Header("Properties")]
         [SerializeField]
-        public Vector2 sensitivity = Vector2.one;
+        public Vector2 sensitivity = 1.8f * Vector2.one;
 
         [SerializeField]
-        private float minCameraAngle = -90;
+        private float minPitchAngle = -90;
         [SerializeField]
-        private float maxCameraAngle = 90;
+        private float maxPitchAngle = 90;
 
         [Header("States")]
         [SerializeField]
-        private float xAngle = 0f;
+        private float headPitchAngle = 0f;
+
+        private void Reset()
+        {
+            TryAssignBody();
+            TryAssignHead();
+
+            void TryAssignBody()
+            {
+                Component body = GetComponentInParent<Rigidbody>();
+                if (body)
+                {
+                    this.body = body.transform;
+                    return;
+                }
+
+                body = GetComponentInParent<CharacterController>();
+                if (body)
+                {
+                    this.body = body.transform;
+                    return;
+                }
+            }
+            void TryAssignHead()
+            {
+                if (body != transform)
+                {
+                    head = transform;
+                    return;
+                }
+
+                head = transform.Find("Head");
+                if (head == null)
+                    head = transform.Find("Camera");
+            }
+        }
 
         private void Start()
         {
             Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
         }
 
-        void Update()
+        private void Update()
         {
             Vector2 moveInput = InputProvider.GetMovement();
             moveInput.Scale(sensitivity);
             
-            xAngle = Mathf.Clamp(xAngle - moveInput.y, minCameraAngle, maxCameraAngle);
+            headPitchAngle = Mathf.Clamp(headPitchAngle - moveInput.y, minPitchAngle, maxPitchAngle);
 
-            head.transform.localRotation = Quaternion.AngleAxis(xAngle, Vector3.right);
+            head.transform.localRotation = Quaternion.AngleAxis(headPitchAngle, Vector3.right);
             body.Rotate(Vector3.up * moveInput.x);
         }
 

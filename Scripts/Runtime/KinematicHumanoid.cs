@@ -1,12 +1,12 @@
-﻿using System;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
+    [AddComponentMenu(AddComponentPath.Humanoids + "Kinematic Humanoid")]
     [RequireComponent(typeof(CharacterController))]
-    public sealed class KinematicHumanoid : Humanoid
+    public sealed class KinematicHumanoid : Humanoid<CharacterController>
     {
-        [Header("States")]
+        [Space, Header("States")]
         [SerializeField]
         private Collision collision;
         public CollisionFlags Collision => (CollisionFlags)collision;
@@ -15,8 +15,13 @@ namespace Bipolar.Humanoid3D
         private Vector3 velocity;
         public override Vector3 Velocity
         {
-            get => Character.velocity;
+            get 
+            { 
+                return Body.velocity;
+            }
         }
+
+        public override Collider Collider => Body;
 
         [SerializeField]
         private Vector3 movementVelocity;
@@ -26,33 +31,22 @@ namespace Bipolar.Humanoid3D
             get => movementVelocity;
         }
 
-        private CharacterController character;
-        private CharacterController Character
-        {
-            get
-            {
-                if (character == null)
-                    character = GetComponent<CharacterController>();
-                return character;
-            }
-        }
-
         public override float Height
         {
-            get => Character.height;
-            set => Character.height = value;
+            get => Body.height;
+            set => Body.height = value;
         }
 
         public override float Radius
         {
-            get => Character.radius;
-            set => Character.radius = value;
+            get => Body.radius;
+            set => Body.radius = value;
         }
 
         public override Vector3 Center
         {
-            get => Character.center;
-            set => Character.center = value;
+            get => Body.center;
+            set => Body.center = value;
         }
 
         [SerializeField]
@@ -61,25 +55,12 @@ namespace Bipolar.Humanoid3D
 
         public override Vector3 LocalMovementVelocity => Quaternion.Inverse(transform.rotation) * movementVelocity;
 
-        private void Reset()
-        {
-            character = GetComponent<CharacterController>();
-            Center = Vector3.up * defaultHumanHeight / 2;
-            Height = defaultHumanHeight;
-        }
-
-        protected override void Awake()
-        {
-            base.Awake();
-            character = GetComponent<CharacterController>();
-        }
-
         internal override void ApplyMovement(float deltaTime)
         {
             movementVelocity = modifiedMovementVelocity;
 
             var localMotion = (movementVelocity + velocity) * deltaTime;
-            collision = (Collision)Character.Move(localMotion);
+            collision = (Collision)Body.Move(localMotion);
             HandleCeilingHit();
             isMoving = movementVelocity != Vector3.zero;
             modifiedMovementVelocity = Vector3.zero;
@@ -100,24 +81,6 @@ namespace Bipolar.Humanoid3D
         public override void AddVelocity(Vector3 velocity)
         {
             this.velocity += velocity;
-        }
-
-        internal override void ApplyGravity(float deltaTime)
-        {
-            if (IsGrounded && velocity.y < 0)
-            {
-                velocity = 0.2f * Gravity.UpScale * Physics.gravity;
-            }
-            else
-            {
-                float gravityScale = Velocity.y > 0 ? Gravity.UpScale : Gravity.DownScale;
-                velocity += gravityScale * deltaTime * Physics.gravity;
-            }
-        }
-
-        private void OnCollisionEnter(UnityEngine.Collision collision)
-        {
-            
         }
     }
 }

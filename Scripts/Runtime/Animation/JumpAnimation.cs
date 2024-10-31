@@ -1,11 +1,9 @@
 ﻿using Bipolar.Humanoid3D.Components;
 using UnityEngine;
-#if NAUGHTY_ATTRIBUTES
-using NaughtyAttributes;
-#endif
 
 namespace Bipolar.Humanoid3D.Animation
 {
+    [AddComponentMenu(AddComponentPath.Animation + "Jump Animation")]
     public class JumpAnimation : HumanoidAnimation
     {
         [SerializeField]
@@ -13,19 +11,9 @@ namespace Bipolar.Humanoid3D.Animation
 
         [SerializeField]
 #if NAUGHTY_ATTRIBUTES
-        [AnimatorParam(AnimatorName)]
+        [AnimatorParameter(AnimatorName, AnimatorControllerParameterType.Trigger)]
 #endif
-        private string jumpTriggerName;
-        private int jumpTriggerHash;
-        public string JumpTriggerName
-        {
-            get => jumpTriggerName;
-            set
-            {
-                jumpTriggerName = value;
-                jumpTriggerHash = Animator.StringToHash(value);
-            }
-        }
+        private AnimationParameter jumpTriggerName;
 
         protected override void Reset()
         {
@@ -36,21 +24,16 @@ namespace Bipolar.Humanoid3D.Animation
         private void OnEnable()
         {
             jump.OnJumped += AnimateJump;
-            JumpTriggerName = JumpTriggerName;
         }
 
         private void AnimateJump()
         {
-            SetTrigger(jumpTriggerHash);
+            SetTrigger(jumpTriggerName);
         }
 
         private void OnDisable()
         {
             jump.OnJumped -= AnimateJump;
-        }
-        private void OnValidate()
-        {
-            JumpTriggerName = JumpTriggerName;
         }
     }   
 }

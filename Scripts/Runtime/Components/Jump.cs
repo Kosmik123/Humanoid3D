@@ -2,6 +2,7 @@
 
 namespace Bipolar.Humanoid3D.Components
 {
+    [AddComponentMenu(AddComponentPath.Components + "Jump")]
     public class Jump : HumanoidComponent
     {
         public event System.Action OnJumped;
@@ -21,9 +22,7 @@ namespace Bipolar.Humanoid3D.Components
             get => coyoteTime;
             set => coyoteTime = value;
         }
-
         private float coyoteTimer;
-
 
         [SerializeField]
         private float jumpBufferDuration = 0.2f;
@@ -32,7 +31,6 @@ namespace Bipolar.Humanoid3D.Components
             get => jumpBufferDuration;
             set => jumpBufferDuration = value;
         }
-
         private float jumpBufferTimer;
 
         public bool CanJump
@@ -49,24 +47,23 @@ namespace Bipolar.Humanoid3D.Components
             }
         }
 
-        public bool IsJumpRequested => jumpBufferTimer < jumpBufferDuration;
+        public bool IsJumpRequested => jumpBufferTimer <= jumpBufferDuration;
 
-        protected override void OnEnable()
+        protected void OnEnable()
         {
-            base.OnEnable();
             coyoteTimer = coyoteTime;
             jumpBufferTimer = jumpBufferDuration;
         }
 
-        public override void DoUpdate(float deltaTime)
+        public override void Apply()
         {
-            coyoteTimer += deltaTime;
-            jumpBufferTimer += deltaTime;
+            coyoteTimer += Time.deltaTime;
+            jumpBufferTimer += Time.deltaTime;
 
             if (humanoid.IsGrounded)
                 coyoteTimer = 0;
 
-            if (UnityEngine.Input.GetKey(KeyCode.Space))
+            if (UnityEngine.Input.GetKeyDown(KeyCode.Space)) // Must be changed
                 jumpBufferTimer = 0;
 
             if (IsJumpRequested && CanJump) 
@@ -76,7 +73,8 @@ namespace Bipolar.Humanoid3D.Components
         public void DoJump()
         {
             coyoteTimer = coyoteTime;
-            humanoid.AddVelocity(Vector3.up * jumpForce);
+            jumpBufferTimer = jumpBufferDuration;
+            humanoid.AddVelocity(humanoid.Transform.up * jumpForce);
             OnJumped?.Invoke();
         }
 

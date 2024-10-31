@@ -2,25 +2,32 @@
 
 namespace Bipolar.Humanoid3D
 {
-    internal interface IHumanoidComponent
+    public interface IHumanoidComponent
     {
-        void Init(Humanoid humanoid);
-        void DoUpdate(float deltaTime);
+        void Apply();
     }
 
-    public abstract class HumanoidComponent : MonoBehaviour, IHumanoidComponent
-    {
-        protected Humanoid humanoid;
-        public bool IsInited => humanoid != null;
+    public interface IHumanoidComponent<in THumanoid> : IHumanoidComponent
+        where THumanoid : IHumanoid
+    { 
+        void SetHumanoid(THumanoid humanoid);
+    }
 
-        public void Init(Humanoid humanoid)  
+    public abstract class BaseHumanoidComponent : MonoBehaviour, IHumanoidComponent
+    {
+        public abstract void Apply();
+    }
+
+    public abstract class HumanoidComponent<TBody> : BaseHumanoidComponent, IHumanoidComponent<IHumanoid<TBody>>
+        where TBody : Component
+    {
+        protected IHumanoid<TBody> humanoid;
+        public void SetHumanoid(IHumanoid<TBody> humanoid)
         {
             this.humanoid = humanoid;
         }
-
-        protected virtual void OnEnable()
-        { }
-
-        public abstract void DoUpdate(float deltaTime);
     }
+
+    public abstract class HumanoidComponent : HumanoidComponent<Component>
+    { }
 }

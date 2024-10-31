@@ -1,34 +1,16 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using Bipolar.Humanoid3D.Animation;
 
-namespace Bipolar.Humanoid3D.Animation
+namespace Bipolar.Humanoid3D.Editor
 {
-    [System.Serializable]
-    public struct AnimationParameter
+    [CustomPropertyDrawer(typeof(AnimationParameter))]
+    public class AnimationParameterDrawer : PropertyDrawer
     {
-        [SerializeField]
-        private string name;
-        [SerializeField]
-        private int hash;
-        private bool hasValue;
-
-        public int Value
+        public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
-            get
-            {
-                if (hasValue == false)
-                {
-                    hash = Animator.StringToHash(name);
-                    hasValue = true;
-                }
-                return hash;
-            }
-        }
-
-        public AnimationParameter(string name)
-        {
-            this.name = name;
-            hash = Animator.StringToHash(name);
-            hasValue = true;
+            var nameProperty = property.FindPropertyRelative("name");
+            EditorGUI.PropertyField(position, nameProperty, label);
         }
     }
 }

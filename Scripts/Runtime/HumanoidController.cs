@@ -5,7 +5,7 @@ namespace Bipolar.Humanoid3D
 {
     [System.Flags]
     public enum Collision
-    { 
+    {
         None = 0,
         Sides = 1 << 0,
         Above = 1 << 1,
@@ -19,46 +19,42 @@ namespace Bipolar.Humanoid3D
         public IReadOnlyList<HumanoidComponent> Components => components;
     }
 
-    [SelectionBase]
+    [RequireComponent(typeof(IHumanoid))]
     public class HumanoidController : MonoBehaviour
     {
-        [SerializeField]
-        private Humanoid humanoid;
+        private Humanoid _humanoid;
+        public Humanoid Humanoid
+        {
+            get
+            {
+                if (_humanoid == null)
+                    _humanoid = GetComponent<Humanoid>();
+                return _humanoid;
+            }
+        }
+
         [SerializeField]
         private HumanoidMovement movement;
 
-        [SerializeField]
-        private HumanoidComponent[] components;
-        public IReadOnlyList<HumanoidComponent> Components => components;
-
         private bool firstFixedUpdate;
-
-        private void Awake()
-        {
-            if (components == null || components.Length == 0)
-                components = GetComponents<HumanoidComponent>();
-            foreach (var component in components)
-                if (component.IsInited == false)
-                    component.Init(humanoid);
-        }
 
         private void Update()
         {
-            float deltaTime = Time.deltaTime;
-            humanoid.ApplyGravity(deltaTime);
-            movement.CalculateVelocity();
-            humanoid.AddMovementVelocity(movement.Velocity);
-            foreach (var component in components)
-                if (component.enabled)
-                    component.DoUpdate(deltaTime);
+            //float deltaTime = Time.deltaTime;
+            //movement.CalculateVelocity();
+            //_humanoid.AddMovementVelocity(movement.Velocity);
+            //foreach (var component in humanoid.Components)
+            //    if (component.enabled)
+            //        component.DoUpdate(deltaTime);
 
-            humanoid.ApplyMovement(deltaTime);
+            //_humanoid.ApplyMovement(deltaTime);
         }
 
         private void FixedUpdate()
         {
             if (firstFixedUpdate)
                 FirstFixedUpdate();
+            _humanoid.ApplyGravity();
         }
 
         private void FirstFixedUpdate()
@@ -73,13 +69,13 @@ namespace Bipolar.Humanoid3D
 
         private void OnValidate()
         {
-            if (humanoid == null)
-                humanoid = GetComponent<Humanoid>();
+            if (_humanoid == null)
+                _humanoid = GetComponent<Humanoid>();
 
-            if (Application.isPlaying)
-                foreach (var component in components)
-                    if (component != null)
-                        component.Init(humanoid);
+            //if (Application.isPlaying)
+            //    foreach (var component in components)
+            //        if (component != null)
+            //            component.Init(_humanoid);
         }
     }
 }

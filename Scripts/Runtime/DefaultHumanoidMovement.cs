@@ -1,6 +1,7 @@
 ﻿using Bipolar.Input;
 using System.Collections.Generic;
 using UnityEngine;
+using Bipolar.Core;
 #if NAUGHTY_ATTRIBUTES
 using NaughtyAttributes;
 #endif
@@ -22,16 +23,16 @@ namespace Bipolar.Humanoid3D
         private List<ISpeedModifier> speedModifiersList;
         protected override IReadOnlyList<ISpeedModifier> SpeedModifiers => speedModifiersList;
 
-        [SerializeField, Range(0,1)]
+        [SerializeField, Range(0, 1)]
         private float sideModifier = 1;
-        [SerializeField, Range(0,1)]
+        [SerializeField, Range(0, 1)]
         private float backModifier = 1;
 
         private Vector3 velocity;
         public override Vector3 Velocity => velocity;
 
 #if NAUGHTY_ATTRIBUTES
-        [SerializeField, ReadOnly]
+        [NaughtyAttributes.ShowNonSerializedField]
 #endif
         private float currentSpeed;
 
