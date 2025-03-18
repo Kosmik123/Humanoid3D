@@ -19,7 +19,7 @@ namespace Bipolar.Humanoid3D
         public IReadOnlyList<HumanoidComponent> Components => components;
     }
 
-    [RequireComponent(typeof(IHumanoid))]
+    [RequireComponent(typeof(Humanoid))]
     public class HumanoidController : MonoBehaviour
     {
         private Humanoid _humanoid;

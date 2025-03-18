@@ -4,7 +4,7 @@ namespace Bipolar.Humanoid3D
 {
     public class PhysicalDynamicGravity : ScriptableObject, IDynamicGravity
     {
-        public void ApplyGravity(IHumanoid<Rigidbody> humanoid)
+        public void ApplyGravity(Humanoid<Rigidbody> humanoid)
         {
             humanoid.Body.useGravity = true;
         }

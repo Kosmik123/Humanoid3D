@@ -8,7 +8,7 @@ namespace Bipolar.Humanoid3D
     }
 
     public interface IHumanoidComponent<in THumanoid> : IHumanoidComponent
-        where THumanoid : IHumanoid
+        where THumanoid : Humanoid
     { 
         void SetHumanoid(THumanoid humanoid);
     }
@@ -18,11 +18,11 @@ namespace Bipolar.Humanoid3D
         public abstract void Apply();
     }
 
-    public abstract class HumanoidComponent<TBody> : BaseHumanoidComponent, IHumanoidComponent<IHumanoid<TBody>>
+    public abstract class HumanoidComponent<TBody> : BaseHumanoidComponent, IHumanoidComponent<Humanoid<TBody>>
         where TBody : Component
     {
-        protected IHumanoid<TBody> humanoid;
-        public void SetHumanoid(IHumanoid<TBody> humanoid)
+        protected Humanoid<TBody> humanoid;
+        public void SetHumanoid(Humanoid<TBody> humanoid)
         {
             this.humanoid = humanoid;
         }

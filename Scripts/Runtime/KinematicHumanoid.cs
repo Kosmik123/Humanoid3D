@@ -26,10 +26,6 @@ namespace Bipolar.Humanoid3D
         [SerializeField]
         private Vector3 movementVelocity;
         private Vector3 modifiedMovementVelocity;
-        public Vector3 Motion
-        {
-            get => movementVelocity;
-        }
 
         public override float Height
         {

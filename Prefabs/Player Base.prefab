@@ -71,7 +71,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1013712740209492037}
-  - component: {fileID: 1013712740209492039}
   m_Layer: 0
   m_Name: Player Base
   m_TagString: Player
@@ -97,20 +96,6 @@ Transform:
   - {fileID: 1014431641685380163}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1013712740209492039
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013712740209492033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 947bc2c42eea23e4bb56cdfa8729c078, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movement: {fileID: 6662325373829142562}
-  components: []
 --- !u!1 &7418883944450652687
 GameObject:
   m_ObjectHideFlags: 0
@@ -156,7 +141,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  moveInputProvider: {fileID: 0}
-  speedModifiers: []
   sideModifier: 1
   backModifier: 1
