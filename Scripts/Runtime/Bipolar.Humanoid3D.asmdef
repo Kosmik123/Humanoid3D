@@ -1,5 +1,5 @@
 {
-    "name": "Humanoid3D",
+    "name": "Bipolar.Humanoid3D",
     "rootNamespace": "Bipolar.Humanoid3D",
     "references": [
         "GUID:f15f1bd6373976940afc9cb47227de81",
