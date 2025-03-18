@@ -2,9 +2,9 @@
 
 namespace Bipolar.Humanoid3D
 {
-    [AddComponentMenu(AddComponentPath.Humanoids + "Kinematic Humanoid")]
+    [AddComponentMenu(AddComponentPath.Humanoids + "Character Humanoid")]
     [RequireComponent(typeof(CharacterController))]
-    public sealed class KinematicHumanoid : Humanoid<CharacterController>
+    public sealed class CharacterHumanoid : Humanoid<CharacterController>
     {
         [Space, Header("States")]
         [SerializeField]
@@ -15,9 +15,9 @@ namespace Bipolar.Humanoid3D
         private Vector3 velocity;
         public override Vector3 Velocity
         {
-            get 
-            { 
-                return Body.velocity;
+            get
+			{
+				return Body.velocity;
             }
         }
 

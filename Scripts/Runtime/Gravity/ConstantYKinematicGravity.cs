@@ -8,7 +8,7 @@ namespace Bipolar.Humanoid3D
         protected float constantY = 0f;
     }
 
-    public class ConstantYKinematicGravity : ConstantYGravity, IKinematicGravity
+    public class ConstantYKinematicGravity : ConstantYGravity, ICharacterGravity
     {
         public void ApplyGravity(Humanoid<CharacterController> humanoid)
         {

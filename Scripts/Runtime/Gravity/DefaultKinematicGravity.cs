@@ -2,7 +2,7 @@
 
 namespace Bipolar.Humanoid3D
 {
-    public class DefaultKinematicGravity : DefaultGravity, IKinematicGravity
+    public class DefaultKinematicGravity : DefaultGravity, ICharacterGravity
     {
         public void ApplyGravity(Humanoid<CharacterController> humanoid)
         {

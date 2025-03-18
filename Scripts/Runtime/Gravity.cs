@@ -8,10 +8,10 @@ namespace Bipolar.Humanoid3D
         void ApplyGravity(THumanoid humanoid);
     }
 
-    public interface IDynamicGravity : IGravity<Humanoid<Rigidbody>>
+    public interface IPhysicalGravity : IGravity<Humanoid<Rigidbody>>
     { }
 
-    public interface IKinematicGravity : IGravity<Humanoid<CharacterController>>
+    public interface ICharacterGravity : IGravity<Humanoid<CharacterController>>
     { }
 
     public interface IGravity : IGravity<Humanoid>
