@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
-    public static class AddComponentPath
+	public static class AddComponentPath
     {
         public const string Root = "Humanoid 3D/";
         public const string Humanoids = Root + "Humanoids/";
@@ -14,17 +14,11 @@ namespace Bipolar.Humanoid3D
         public const string Other = Root + "Other/";
     }
 
-    public interface ISpeedModifier
-    {
-        void ModifySpeed(ref float speed);
-    }
-
     public abstract class HumanoidMovement : MonoBehaviour
     {
         [SerializeField]
         private float moveSpeed = 4;
 
-        [SerializeField]
         protected abstract IReadOnlyList<ISpeedModifier> SpeedModifiers { get; }
 
         internal abstract void CalculateVelocity();

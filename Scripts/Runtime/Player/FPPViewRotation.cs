@@ -1,8 +1,9 @@
-﻿using Bipolar.Input;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Player
 {
+
+
     public class FPPViewRotation : MonoBehaviour
     {
         [Header("To Link")]
