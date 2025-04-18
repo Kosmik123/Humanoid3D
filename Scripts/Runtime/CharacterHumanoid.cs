@@ -1,17 +1,23 @@
-﻿using UnityEngine;
+﻿using NaughtyAttributes;
+using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
-    [AddComponentMenu(AddComponentPath.Humanoids + "Character Humanoid")]
+    [AddComponentMenu(Paths.Humanoids + "Character Humanoid")]
     [RequireComponent(typeof(CharacterController))]
     public sealed class CharacterHumanoid : Humanoid<CharacterController>
     {
+        [SerializeField, RequireType(typeof(ParticleSystem))]
+        private ParticleSystem walkParticles;
+
         [Space, Header("States")]
         [SerializeField]
+        [ReadOnly]
         private Collision collision;
         public CollisionFlags Collision => (CollisionFlags)collision;
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 velocity;
         public override Vector3 Velocity
         {
@@ -24,6 +30,7 @@ namespace Bipolar.Humanoid3D
         public override Collider Collider => Body;
 
         [SerializeField]
+        [ReadOnly]
         private Vector3 movementVelocity;
         private Vector3 modifiedMovementVelocity;
 
@@ -45,7 +52,7 @@ namespace Bipolar.Humanoid3D
             set => Body.center = value;
         }
 
-        [SerializeField]
+        [SerializeField, ReadOnly]
         private bool isMoving;
         public override bool IsMoving => isMoving;
 

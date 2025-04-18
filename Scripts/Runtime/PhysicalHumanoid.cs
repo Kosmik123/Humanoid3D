@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D
 {
-    [AddComponentMenu(AddComponentPath.Humanoids + "Physical Humanoid")]
+    [AddComponentMenu(Paths.Humanoids + "Physical Humanoid")]
     [RequireComponent(typeof(Rigidbody), typeof (CapsuleCollider))]
     public sealed class PhysicalHumanoid : Humanoid<Rigidbody>
     {

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    [AddComponentMenu(AddComponentPath.Animation + "Jump Animation")]
+    [AddComponentMenu(Paths.Animation + "Jump Animation")]
     public class JumpAnimation : HumanoidAnimation
     {
         [SerializeField]

@@ -83,8 +83,8 @@ namespace Bipolar.Humanoid3D
 		[SerializeField]
 		private Gravity<TBody> gravity;
 
-		[SerializeField, RequireInterface(typeof(IHumanoidComponent))]
-		private List<BaseHumanoidComponent> humanoidComponents;
+		[SerializeField]
+		private List<Serialized<IHumanoidComponent<Humanoid<TBody>>>> humanoidComponents;
 		private readonly List<IHumanoidComponent<Humanoid<TBody>>> _components = new List<IHumanoidComponent<Humanoid<TBody>>>();
 		public IReadOnlyList<IHumanoidComponent<Humanoid<TBody>>> Components
 		{
@@ -119,15 +119,13 @@ namespace Bipolar.Humanoid3D
 		protected virtual void OnEnable()
 		{
 			ValidateComponents();
-			InitializeComponents();
 		}
 
 		private void Update()
 		{
 			ApplyGravity();
 			foreach (var component in Components)
-				if (component != null)
-					component.Apply();
+				component?.Apply(this);
 		}
 
 		internal override void ApplyGravity()
@@ -141,14 +139,6 @@ namespace Bipolar.Humanoid3D
 				gameObject.AddComponent<TBody>();
 
 			ValidateComponents();
-			InitializeComponents();
-		}
-
-		private void InitializeComponents()
-		{
-			foreach (var component in Components)
-				if (component != null)
-					component.SetHumanoid(this);
 		}
 	}
 }

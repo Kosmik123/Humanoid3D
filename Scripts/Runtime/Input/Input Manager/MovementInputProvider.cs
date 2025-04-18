@@ -2,7 +2,7 @@
 
 namespace Bipolar.Humanoid3D.InputManager
 {
-	[AddComponentMenu(Paths.Components + "Input Manager Movement Input Provider")]
+	[AddComponentMenu(Paths.Input + "Input Manager Movement Input Provider")]
 	public class MovementInputProvider : MonoBehaviour, IMoveInputProvider
 	{
 #if NAUGHTY_ATTRIBUTES

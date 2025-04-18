@@ -3,7 +3,7 @@ using UnityEngine.UIElements;
 
 namespace Bipolar.Humanoid3D.InputManager
 {
-	[AddComponentMenu(Paths.Components + "Input Manager Mouse Click Input Provider")]
+	[AddComponentMenu(Paths.Input + "Input Manager Mouse Click Input Provider")]
 	public class MouseClickActionProvider : MonoBehaviour, IActionInputProvider
     {
         public event System.Action OnPerformed;

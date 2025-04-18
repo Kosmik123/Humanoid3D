@@ -11,6 +11,4 @@ namespace Bipolar.Humanoid3D
             humanoid.Body.Move(gravity * Time.deltaTime); // ITS WRONG! HOWEVER IT WILL BE FIXED LATER
         }
     }
-
-
 }

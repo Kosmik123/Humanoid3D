@@ -1,0 +1,16 @@
+{
+    "name": "Bipolar.FSM",
+    "rootNamespace": "Bipolar.FSM",
+    "references": [
+        "GUID:f15f1bd6373976940afc9cb47227de81"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Input.InputSystem
 {
-    [AddComponentMenu(Paths.Components + "Input System Axis Input Provider")]
+    [AddComponentMenu(Paths.Input + "Input System Axis Input Provider")]
 	public class AxisInputProvider : InputProviderBase, IAxisInputProvider
     {
         private enum AxisType

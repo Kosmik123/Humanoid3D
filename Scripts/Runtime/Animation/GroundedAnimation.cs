@@ -2,7 +2,7 @@
 
 namespace Bipolar.Humanoid3D.Animation
 {
-    [AddComponentMenu(AddComponentPath.Animation + "Grounded Animation")]
+    [AddComponentMenu(Paths.Animation + "Grounded Animation")]
     public class GroundedAnimation : HumanoidAnimation
     {
         [SerializeField]

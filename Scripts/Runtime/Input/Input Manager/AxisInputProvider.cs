@@ -2,7 +2,7 @@
 
 namespace Bipolar.Humanoid3D.InputManager
 {
-	[AddComponentMenu(Paths.Components + "Input Manager Axis Input Provider")]
+	[AddComponentMenu(Paths.Input + "Input Manager Axis Input Provider")]
     public class AxisInputProvider : MonoBehaviour, IAxisInputProvider
     {
 #if NAUGHTY_ATTRIBUTES

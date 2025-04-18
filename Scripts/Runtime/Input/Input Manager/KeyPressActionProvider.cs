@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Bipolar.Humanoid3D.InputManager
 {
-	[AddComponentMenu(Paths.Components + "Input Manager Key Press Input Provider")]
+	[AddComponentMenu(Paths.Input + "Input Manager Key Press Input Provider")]
 	public class KeyPressActionInputProvider : KeyActionInputProvider
     {
 		protected override Func<KeyCode, bool> GetCheckingMethod()

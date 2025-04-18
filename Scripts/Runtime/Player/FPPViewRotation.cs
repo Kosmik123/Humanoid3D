@@ -2,8 +2,6 @@
 
 namespace Bipolar.Humanoid3D.Player
 {
-
-
     public class FPPViewRotation : MonoBehaviour
     {
         [Header("To Link")]
@@ -13,16 +11,8 @@ namespace Bipolar.Humanoid3D.Player
         [SerializeField]
         private Transform body;
 
-        [SerializeField, RequireInterface(typeof(IMoveInputProvider))]
-        private Object movementInputProvider;
-        public IMoveInputProvider InputProvider
-        {
-            get => movementInputProvider as IMoveInputProvider;
-            set
-            {
-                movementInputProvider = (Object)value;
-            }
-        }
+        [SerializeField]
+        private MoveInputProvider inputProvider;
 
         [Header("Properties")]
         [SerializeField]
@@ -58,6 +48,7 @@ namespace Bipolar.Humanoid3D.Player
                     return;
                 }
             }
+
             void TryAssignHead()
             {
                 if (body != transform)
@@ -66,9 +57,7 @@ namespace Bipolar.Humanoid3D.Player
                     return;
                 }
 
-                head = transform.Find("Head");
-                if (head == null)
-                    head = transform.Find("Camera");
+                head = transform.Find("Head") ?? transform.Find("Camera");
             }
         }
 
@@ -80,18 +69,13 @@ namespace Bipolar.Humanoid3D.Player
 
         private void Update()
         {
-            Vector2 moveInput = InputProvider.GetMovement();
+            Vector2 moveInput = inputProvider.GetMovement();
             moveInput.Scale(sensitivity);
             
             headPitchAngle = Mathf.Clamp(headPitchAngle - moveInput.y, minPitchAngle, maxPitchAngle);
 
             head.transform.localRotation = Quaternion.AngleAxis(headPitchAngle, Vector3.right);
             body.Rotate(Vector3.up * moveInput.x);
-        }
-
-        private void OnValidate()
-        {
-            InputProvider = InputProvider;
         }
     }
 }
