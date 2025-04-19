@@ -7,7 +7,7 @@ namespace Bipolar.Humanoid3D
     [RequireComponent(typeof(CharacterController))]
     public sealed class CharacterHumanoid : Humanoid<CharacterController>
     {
-        [SerializeField, RequireType(typeof(ParticleSystem))]
+        [SerializeField, RequireInterface(typeof(ParticleSystem))]
         private ParticleSystem walkParticles;
 
         [Space, Header("States")]

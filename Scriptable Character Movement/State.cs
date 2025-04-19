@@ -1,22 +1,39 @@
 ﻿namespace Bipolar.ScriptableCharacterMovement
 {
-	internal struct Transition
-	{
-		public System.Func<bool> invokingEvent;
-		public State to;
-		public System.Action action;
-	}
-
-	public partial class State 
+    internal struct Transition
     {
-		public void Enter() => OnEnter();
+        public System.Func<bool> invokingEvent;
+        public State to;
+        public System.Action action;
 
-		public void Exit() => OnExit();
+        public Transition(System.Func<bool> invokingEvent, State to, System.Action action)
+        {
+            this.invokingEvent = invokingEvent;
+            this.to = to;
+            this.action = action;
+        }
+    }
 
-		protected virtual void OnEnter()
-		{ }
+    public interface IEnterableState
+    {
+        void Enter();
+    }
 
-		protected virtual void OnExit()
-		{ }
-	}
+    public interface IExitableState
+    {
+        void Exit();
+    }
+
+    public interface IUpdatedState
+    {
+        void Update();
+    }
+
+    public interface IFixedUpdatedState
+    {
+        void FixedUpdate();
+    }
+
+    public partial class State
+    { }
 }
