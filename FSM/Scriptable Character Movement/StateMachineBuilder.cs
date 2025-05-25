@@ -2,6 +2,7 @@
 
 namespace Bipolar.ScriptableCharacterMovement
 {
+
 	public interface IStateMachineBuilder
 	{
 		StateMachine Build();
@@ -10,17 +11,16 @@ namespace Bipolar.ScriptableCharacterMovement
 	public interface IStateMachineBuilder<TState> : IStateMachineBuilder 
 		where TState : State
 	{
-        IStateMachineBuilder<TState> SetInitialState(TState initialState);
-        IStateMachineBuilder<TState> AddTransition(TState from, System.Func<bool> trigger, TState to, System.Action action = null);
-        IStateMachineBuilder<TState> AddTransitionFromAnyState(System.Func<bool> trigger, TState to, System.Action action = null);
+		IStateMachineBuilder<TState> SetInitialState(TState initialState);
+		IStateMachineBuilder<TState> AddTransition(TState from, System.Func<bool> trigger, TState to, System.Action action = null);
+		IStateMachineBuilder<TState> Add(Transitions<TState> transitions);
 	}
 
 	public class StateMachineBuilder<TState> : IStateMachineBuilder<TState>
 		where TState : State
 	{
 		private State initialState;
-		private readonly HashSet<State> states = new HashSet<State>();
-		private readonly List<Transition> transitionsFromAnyState = new List<Transition>();
+		private readonly HashSet<TState> states = new HashSet<TState>();
 
 		public IStateMachineBuilder<TState> SetInitialState(TState initialState)
 		{
@@ -36,13 +36,6 @@ namespace Bipolar.ScriptableCharacterMovement
 			states.Add(to);
 			return this;
 		}
-		
-		public IStateMachineBuilder<TState> AddTransitionFromAnyState(System.Func<bool> invokingEvent, TState to, System.Action action = null)
-		{
-			transitionsFromAnyState.Add(new Transition(invokingEvent, to, action));
-			states.Add(to);
-			return this;
-		}
 
 		public StateMachine Build()
 		{
@@ -51,8 +44,23 @@ namespace Bipolar.ScriptableCharacterMovement
 				state.Initialize(stateMachine);
 			return stateMachine;
 		}
+
+		public IStateMachineBuilder<TState> Add(Transitions<TState> transitions)
+		{
+
+		}
 	}
 
 	public class StateMachineBuilder : StateMachineBuilder<State>
 	{ }
+
+	public class TransititionBuilder
+	{
+
+	}
+
+	public static class StateMachineBuilderExtensions<TState> 
+		where TState : State
+	{
+	}
 }
