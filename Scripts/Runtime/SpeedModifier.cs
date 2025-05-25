@@ -5,8 +5,9 @@
 		void ModifySpeed(ref float speed);
 	}
 
+	[System.Serializable]	
 	public class SpeedModifier : Serialized<ISpeedModifier>, ISpeedModifier
 	{
-		public void ModifySpeed(ref float speed) => ModifySpeed(ref speed);
+		public void ModifySpeed(ref float speed) => Value.ModifySpeed(ref speed);
 	}
 }

@@ -1,0 +1,14 @@
+{
+    "name": "Bipolar.AnotherFSM",
+    "rootNamespace": "Bipolar.AnotherFSM",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

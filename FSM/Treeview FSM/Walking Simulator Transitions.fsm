@@ -1,0 +1,50 @@
+{
+    "Initial": "Idle"
+    "States": [
+        {
+            "Name": "Grounded",
+            "Abstract": true,
+            "Base": "",
+            "Transitions": [
+                {
+                    "Event": "",
+                    "Next": "",
+                    "Actions": [
+                        
+                    ]
+
+                },
+            ]
+        },
+        {
+            "Name": "Idle",
+            "Abstract": false,
+            "Base": "Grounded",
+            "Transitions": [
+                {
+                    "Event": "Move",
+                    "Next": "Walking",
+                    "Actions": [
+                        
+                    ]
+
+                },
+            ]
+        },
+        {
+            "Name": "Walking",
+            "Abstract": false,
+            "Base": "Grounded",
+            "Transitions": [
+                {
+                    "Event": "",
+                    "Next": "",
+                    "Actions": [
+                        
+                    ]
+
+                },
+            ]
+        },
+    ]   
+}
