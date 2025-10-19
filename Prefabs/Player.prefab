@@ -62,6 +62,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   head: {fileID: 1013712739448252223}
   body: {fileID: 1013712740209492037}
+  inputProvider:
+    serializedObject: {fileID: 8016803911720689134}
   sensitivity: {x: 2, y: 2}
   minPitchAngle: -90
   maxPitchAngle: 90
@@ -107,7 +109,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1013712740209492037}
   - component: {fileID: 3581922374701213204}
-  - component: {fileID: 2251036979301896846}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -159,20 +160,6 @@ CharacterController:
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
   m_Center: {x: 0, y: 0.9, z: 0}
---- !u!114 &2251036979301896846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1013712740209492033}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7ee96b1a0243d1e46b4c54b73a508b4b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  walk:
-    walkSpeed: 5
 --- !u!1 &3384392740832299022
 GameObject:
   m_ObjectHideFlags: 0

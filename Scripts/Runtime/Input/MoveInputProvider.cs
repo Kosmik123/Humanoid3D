@@ -7,7 +7,8 @@ namespace Bipolar.Humanoid3D
         Vector2 GetMovement();
     }
 
-    public class MoveInputProvider : Serialized<IMoveInputProvider>, IMoveInputProvider
+    [System.Serializable]
+	public class MoveInputProvider : Serialized<IMoveInputProvider>, IMoveInputProvider
     {
         public Vector2 GetMovement() => Value.GetMovement();
     }
