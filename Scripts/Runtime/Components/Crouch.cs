@@ -1,5 +1,4 @@
-﻿using NaughtyAttributes;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace Bipolar.Humanoid3D.Components
 {
@@ -21,10 +20,16 @@ namespace Bipolar.Humanoid3D.Components
         [field: SerializeField]
         public float SpeedModifier { get; set; } = 0.7f;
 
-        [field: Header("States"), SerializeField, ReadOnly]
+        [field: Header("States"), SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [field: NaughtyAttributes.ReadOnly]
+#endif
         public bool IsCrouching { get; protected set; }
 
-        [field: SerializeField, ReadOnly]
+        [field: SerializeField]
+#if NAUGHTY_ATTRIBUTES
+        [field: NaughtyAttributes.ReadOnly]
+#endif
         public Vector3 IdleHeadPosition { get; set; }
 
         private float timer;
@@ -32,7 +37,7 @@ namespace Bipolar.Humanoid3D.Components
 #if NAUGHTY_ATTRIBUTES
         [NaughtyAttributes.ReadOnly]
 #endif
-        [SerializeField, ReadOnly]
+        [SerializeField]
         private float crouchingProgress;
 
         private void Awake()

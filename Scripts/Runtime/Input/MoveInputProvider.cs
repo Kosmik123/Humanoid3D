@@ -12,4 +12,15 @@ namespace Bipolar.Humanoid3D
     {
         public Vector2 GetMovement() => Value.GetMovement();
     }
+
+    public interface IBoolInputProvider
+    {
+        bool IsActive();
+    }
+
+    [System.Serializable]
+    public class BoolInputProvider : Serialized<IBoolInputProvider>, IBoolInputProvider
+    {
+        public bool IsActive() => Value.IsActive();
+    }
 }
