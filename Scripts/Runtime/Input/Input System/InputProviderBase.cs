@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-namespace Bipolar.Input.InputSystem
+namespace Bipolar.Humanoid3D.InputSystem
 {
 	public abstract class InputProviderBase : MonoBehaviour
     {

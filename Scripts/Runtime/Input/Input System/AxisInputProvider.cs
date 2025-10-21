@@ -1,7 +1,8 @@
 ﻿#if ENABLE_INPUT_SYSTEM
+using Bipolar.Humanoid3D;
 using UnityEngine;
 
-namespace Bipolar.Input.InputSystem
+namespace Bipolar.Humanoid3D.InputSystem
 {
     [AddComponentMenu(Paths.Input + "Input System Axis Input Provider")]
 	public class AxisInputProvider : InputProviderBase, IAxisInputProvider
