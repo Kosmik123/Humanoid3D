@@ -47,7 +47,7 @@ namespace Bipolar.ScriptableCharacterMovement
 
 		public IStateMachineBuilder<TState> Add(Transitions<TState> transitions)
 		{
-
+			return default;
 		}
 	}
 

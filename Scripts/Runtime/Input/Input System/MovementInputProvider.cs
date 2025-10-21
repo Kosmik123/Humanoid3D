@@ -1,7 +1,7 @@
 ﻿#if ENABLE_INPUT_SYSTEM
 using UnityEngine;
 
-namespace Bipolar.Input.InputSystem
+namespace Bipolar.Humanoid3D.InputSystem
 {
     [AddComponentMenu(Paths.Input + "Input System Movement Input Provider")]
     public class MovementInputProvider : InputProviderBase, IMoveInputProvider

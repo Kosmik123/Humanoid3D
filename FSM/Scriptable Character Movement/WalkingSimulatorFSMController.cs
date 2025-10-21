@@ -48,16 +48,8 @@ namespace Bipolar.ScriptableCharacterMovement
 					.Add(() => Input.GetButton("Jump"), jump)
 					.Add(() => !Input.anyKey, idle));
 
-
-
-
-
-
-
-
-
-
-		}
+            return stateMachineBuilder;
+        }
 	}
 
 	[System.Serializable]
