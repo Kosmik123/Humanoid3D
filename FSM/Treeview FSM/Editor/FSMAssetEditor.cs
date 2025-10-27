@@ -1,4 +1,6 @@
-﻿namespace Bipolar.FSM.Editor
+﻿#if UNITY_EDITOR
+
+namespace Bipolar.FSM.Editor
 {
     using UnityEditor;
     using UnityEditor.Callbacks;
@@ -34,3 +36,4 @@
         }
     }
 }
+#endif

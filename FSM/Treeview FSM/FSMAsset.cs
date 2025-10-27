@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Bipolar.FSM
 {
-    [CreateAssetMenu]
+    [CreateAssetMenu (menuName ="Bipolar/FSM/FSM Asset")]
     public class FSMAsset : ScriptableObject
     {
         [SerializeField]
